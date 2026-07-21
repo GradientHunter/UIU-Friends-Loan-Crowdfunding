@@ -1,0 +1,77 @@
+# ==========================
+# Environment & credentials
+# ==========================
+.env
+.env.local
+*.env
+backend/config/db.local.php
+
+# ==========================
+# User-uploaded content
+# (keep folder structure, ignore actual uploaded files)
+# ==========================
+uploads/campaigns/covers/*
+!uploads/campaigns/covers/.htaccess
+!uploads/campaigns/covers/.gitkeep
+
+uploads/campaigns/proofs/*
+!uploads/campaigns/proofs/.htaccess
+!uploads/campaigns/proofs/.gitkeep
+
+uploads/id_cards/*
+!uploads/id_cards/.htaccess
+!uploads/id_cards/.gitkeep
+
+uploads/profiles/*
+!uploads/profiles/.htaccess
+!uploads/profiles/.gitkeep
+
+# ==========================
+# PHP / Composer
+# ==========================
+vendor/
+composer.lock
+*.cache
+
+# ==========================
+# Node / frontend tooling (if added later)
+# ==========================
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+
+# ==========================
+# Logs
+# ==========================
+*.log
+error_log
+logs/
+
+# ==========================
+# OS files
+# ==========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==========================
+# Editor / IDE
+# ==========================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+
+# ==========================
+# XAMPP / WAMP / Laragon local artifacts
+# ==========================
+*.sql.bak
+phpmyadmin_import_history/
+
+# ==========================
+# Misc
+# ==========================
+*.tmp
+*.bak

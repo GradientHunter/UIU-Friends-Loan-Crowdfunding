@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UIU Friends Loan and Crowdfunding Network</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="homepagestyle.css" />
+</head>
+<body>
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+
+            <div class="logo">
+                <div class="logo-icon">U</div>
+                <span class="logo-name">UIU Friends Network</span>
+            </div>
+
+            <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <nav class="desktop-nav">
+                <a href="#mission">Our Mission</a>
+                <a href="#how-it-works">How it Works</a>
+                <a href="#success-stories">Success Stories</a>
+            </nav>
+
+            <div class="header-auth">
+                <a href="login.html" class="link-signin">Sign In</a>
+                <a href="registration.html"><button class="btn-register">Register with Student ID</button></a>
+
+            </div>
+
+        </div>
+
+        <div class="mobile-menu" id="mobileNav">
+            <a href="#mission">Our Mission</a>
+            <a href="#how-it-works">How it Works</a>
+            <a href="#success-stories">Success Stories</a>
+            <a href="#" class="link-signin mobile-signin">Sign In</a>
+            <button class="btn-register mobile-register">Register with Student ID</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="mission" class="hero-section">
+
+            <div class="accent-top-right"></div>
+
+            <div class="hero-content fade-in">
+                <span class="hero-badge">Community First Fintech</span>
+                <h1 class="hero-title">
+                    UIU Students Supporting <br />
+                    <span class="highlight-green">UIU Students.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    The first trusted Peer-to-Peer network exclusively for United International University.
+                    Get interest-free help or fund student dreams with zero middlemen.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary">Join the Network</button>
+                    <button class="btn-outline">Explore Public Campaigns</button>
+                </div>
+
+                <div class="mockup-grid fade-in">
+                    <div class="glass-card mockup-card">
+                        <div class="trust-circle-wrapper">
+                            <svg class="trust-svg" viewBox="0 0 96 96">
+                                <circle cx="48" cy="48" r="40" fill="transparent" stroke="var(--emerald-100)" stroke-width="8"></circle>
+                                <circle cx="48" cy="48" r="40" fill="transparent" stroke="var(--uiu-green)" stroke-width="8"
+                                        stroke-dasharray="251.2" stroke-dashoffset="50"></circle>
+                            </svg>
+                            <span class="trust-score-label">850</span>
+                        </div>
+                        <h3 class="mockup-title">High Trust Score</h3>
+                        <p class="mockup-subtitle">Verified by Admin</p>
+                    </div>
+
+                    <div class="glass-card mockup-card mockup-offset">
+                        <div class="loan-card-top">
+                            <div class="loan-check-icon">
+                                <svg width="24" height="24" fill="none" stroke="var(--uiu-green)" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="loan-id-badge">LOAN ID: #882</span>
+                        </div>
+
+                        <p class="loan-status-label">Status</p>
+                        <h3 class="loan-status-value">Fund Disbursed</h3>
+
+                        <div class="loan-student-info">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6X8D-eX9xOPtsUQgepqAU5Ldo8kaAkzvw34C9g67sQnFMx_IKAlQ-vX8eQeZciTX9OV2EqbGK_zS7nQAa5aWJfbnJLf4jzPWTNfJW7W5I7leeHoUyov4yC7AEEA8FhUmUTaLopz2kGGRfvCcA9r73MsKrqHiRK9uVxGmYk0d79rMaKp3XoPsOiR3L9ZLWpJnc2SM_bLgKIrBVqyAoVkBKMdn_pLYxcRJlO6HIMPgQQGyKnZYGtG2HhOC2d8dwzN2eqibDpe9cZ1Yi"
+                                 alt="Student" class="loan-student-avatar" />
+                            <div>
+                                <p class="loan-student-name">Rahat Ahmed</p>
+                                <p class="loan-student-term">Trimester: Fall 2023</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card mockup-card">
+                        <h4 class="fundraise-title">Tuition Fee Support</h4>
+
+                        <div class="progress-track">
+                            <div class="progress-fill"></div>
+                        </div>
+
+                        <div class="progress-labels">
+                            <span class="progress-raised">৳ 45,000 Raised</span>
+                            <span class="progress-pct">75%</span>
+                        </div>
+
+                        <div class="avatar-stack">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3xJRTlv0C__SmW4oQmPGEgJuFEP3VEqDwSFNw72QwGcSlQYRd6KeLiv4t7MRGrG6xs4gHGqEUF0Fvx-qlmJngW_1ds1UM3cTXsixwzT_TGZgxFS-dBRi2YwY3lHIGvrE-UDjNaumnMohR-mfFDNLTXn1yLS2GiSPHXryI2GyDdRQu8xxIupR0vdmKmv34IgyqJgvzGNe_dpndgHvNldZT0ccDYcAqX6eIaXxWhdwv_fuc_knUJn83oC9V9S6359vZmzdgyc6KODAg" alt="Contributor" />
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuByD--_Gxwftf4uhACCnNA-jdDqTZQiR-R1lCiJX96bc5UlqlBN1avyCXIvr4dfAFtsKX4EC-Sa9xADyAZWjp_F65DWUVSCQir0_YQB_OjiKmPEK3_LbGldu_lNBA6QZb5nhCmukFGmlfb4PM9mYJXZz2yiPQfGiz2NlfwxRhLXkDAitkZBXN7ezpOmV0r2QOCr-TloOj6tn4oVDTrHKklZIR4Zfwnl0J4AuNhdiD4zzMSRs-rCTvd_oI5AsKGEPw7v5r0HmqZ32vW1" alt="Contributor" />
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCD2vvGEjT-GykympEnPdTbLMmcwLAzF-4-REyea2vFDy-SlUeNFkVHOso0a7Cz5tdPLFO5bPqBt_zJpJwQ7t7tYcUxXL7tzYx08XI-3rBPjk4X7QoGWNpIh3xtzMARBgSZXhjSvIsGlJN2cHHDKCjjea8A2nXvPxvYZ1YJPElvxX1Mr-Q2NtwHmikXGkTcaImWgpojfkal5wrsRwuTTiI3gkeD2rPjBM0AELi_R9Zp-4mlbiJv2x49JSoKNZyGe-bTOZxRCbJIqzK" alt="Contributor" />
+                            <div class="avatar-more">+12</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="how-it-works" class="hiw-section">
+            <div class="container fade-in">
+
+                <div class="section-header">
+                    <h2 class="section-title">How It Works</h2>
+                    <p class="section-subtitle">Getting started is easy. We've built a streamlined process to ensure security and speed.</p>
+                </div>
+
+                <div class="steps-grid">
+
+                    <div class="step-card fade-in">
+                        <div class="step-icon">
+                            <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="step-title">1. Verify Identity</h3>
+                        <p class="step-desc">Sign up with your UIU Student ID. Our admins verify every profile to maintain a safe campus environment.</p>
+                    </div>
+
+                    <div class="step-card fade-in">
+                        <div class="step-icon">
+                            <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="step-title">2. Connect &amp; Bid</h3>
+                        <p class="step-desc">Post a loan request or a donation campaign. Students can bid to help with amounts they are comfortable with.</p>
+                    </div>
+
+                    <div class="step-card fade-in">
+                        <div class="step-icon">
+                            <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="step-title">3. Build Trust</h3>
+                        <p class="step-desc">Successful repayments and active help increase your Trust Score, unlocking higher limits and faster approvals.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="security-section">
+            <div class="container">
+                <div class="security-grid">
+
+                    <div class="fade-in">
+                        <h2 class="sec-title">Built on Trust, Exclusively for the UIU Family</h2>
+                        <p class="sec-desc">
+                            We believe in financial empowerment through community. Our platform is designed
+                            with security at its core to protect both lenders and borrowers.
+                        </p>
+
+                        <div class="feature-list">
+
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="feature-title">Admin Verified IDs</h4>
+                                    <p class="feature-desc">Every user is cross-checked with official university records before gaining access to the network.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="feature-title">Transparent Bidding</h4>
+                                    <p class="feature-desc">Public visibility of loan terms and bidding process ensures fair treatment for everyone involved.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09a13.916 13.916 0 002.522-8.113V11.08c0-2.264.582-4.509 1.685-6.507A10.998 10.998 0 0118 11.07v1.012m-9-3.931a4 4 0 00-3 3.855v.662a4.001 4.001 0 006.113 3.432">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="feature-title">Direct bKash/Nagad Transfers</h4>
+                                    <p class="feature-desc">Funds are transferred directly student-to-student via trusted mobile banking gateways for instant access.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="security-visual fade-in">
+                        <div class="sec-glow"></div>
+
+                        <div class="sec-card">
+                            <div class="window-dots">
+                                <div class="dot dot-red"></div>
+                                <div class="dot dot-yellow"></div>
+                                <div class="dot dot-green"></div>
+                            </div>
+
+                            <div class="sec-card-lines">
+                                <div class="sec-line sec-line-long"></div>
+                                <div class="sec-line sec-line-short"></div>
+                                <div class="sec-layer-box">
+                                    <span class="sec-layer-label">Security Verification Layer</span>
+                                </div>
+                                <div class="sec-blocks">
+                                    <div class="sec-block"></div>
+                                    <div class="sec-block"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="success-stories" class="stories-section">
+            <div class="container fade-in">
+
+                <div class="stories-header">
+                    <div>
+                        <h2 class="section-title">Success Stories</h2>
+                        <p class="section-subtitle">Hear from students who have successfully navigated their academic challenges through the network.</p>
+                    </div>
+                    <a href="#" class="view-all-link">
+                        View All Stories
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="stories-grid">
+
+                    <div class="story-card fade-in">
+                        <div class="stars">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        </div>
+                        <p class="story-quote">"I was short on my trimester fees due to an emergency at home. Within 48 hours of posting my request, 4 fellow students contributed to cover the gap. I repaid it the next month. Forever grateful!"</p>
+                        <div class="story-author">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTRhmayHe-jHCTru7aFyPx3d-70Vds8MwgpDX7xUMwu7Z91OCms4Ax4WHbq8GA6ADEngvsjd5DcXmocOeSijY8xfWz0Yne7h4yyNBEW6xLlltTNPaOjUtcle-fvCq1rUIfqwSaCizPf-iKQnq3nmSr0PGsVtsmQj6awfrZJc4oM2bgibLiJ8Maghe8B4M5E-HmYirSrs20CpSJ6I7xUWxFW_fu05BLNbU9x03NAj3MYFbvpfT-CspqwIlEUCb8eggE9IwLSVnbmIyC"
+                                 alt="Asif" class="author-photo" />
+                            <div>
+                                <h4 class="author-name">Asif Chowdhury</h4>
+                                <p class="author-role">CSE Student, 10th Trimester</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <div class="stars">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        </div>
+                        <p class="story-quote">"Crowdfunding for our Robotics project was seamless. We raised 25k in just one week from students who believed in our innovation. This network is a blessing for UIUians."</p>
+                        <div class="story-author">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-KJ4ae5Vxv3FN9oxjxZXiTuDWbcJ95qoCEziyUfJQYgJhGun11LMChFqU6-wGwnM6dDiAZIldRhl8unNRVB1EjwzCrf9OVzdIYhEWdmzDcWdxa87UPfXb1o-X5lNOfAtTSl30umHGTb50Vbioz1nekYnZ1byIVicmNOUx--KXhYC1bSWOCEqiOZSObZnfWn-ApZaUrqYtiyDJGaooB0CSPJVReggmTDAYWzC0bv7tANkYXhmJF6mAzNzWqsALEVWAaa274TDjRZFt"
+                                 alt="Sarah" class="author-photo" />
+                            <div>
+                                <h4 class="author-name">Sarah Islam</h4>
+                                <p class="author-role">EEE Student, 8th Trimester</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <div class="stars">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        </div>
+                        <p class="story-quote">"The Trust Score system is great. As I repaid my first small loan, my score increased, allowing me to borrow more for my laptop when I needed it most. Highly recommended!"</p>
+                        <div class="story-author">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBydc36Gk04xJTG9jeU4Khse_jsVoyNa0arqE2LFp34BWbhximWHIspZMm6nO4U_ZNjsaNvqNeHbDkz1BQ0cbN3AiklKYXtDmDoJE6uKw4QdiYdjk7lETlTBeWtcl7J2AXPrfe7XjD9wx-pkoFmptM2-eygG2eeFve0n5TRMBlZxgtJVK-ZtJNvpSH_vMKCM7Y2t-s5B3hYAEDRYLhgRdfRdn0WUZxajIoqTHR61K-kuqp7qQXJQ_Egj5MMeVmKilFdL7px9c-VwOBx"
+                                 alt="Tanvir" class="author-photo" />
+                            <div>
+                                <h4 class="author-name">Tanvir Mahtab</h4>
+                                <p class="author-role">BBA Student, 12th Trimester</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+  
+    <footer class="site-footer">
+        <div class="container">
+
+            <div class="footer-grid fade-in">
+
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon">U</div>
+                        <span class="logo-name">UIU Friends Network</span>
+                    </div>
+                    <p class="footer-tagline">
+                        A student-led initiative to foster financial collaboration and community support
+                        within United International University.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter/X">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-link-list">
+                        <li><a href="#mission">Our Mission</a></li>
+                        <li><a href="#how-it-works">How it Works</a></li>
+                        <li><a href="#">Safety Guide</a></li>
+                        <li><a href="#">Campaigns</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Legal</h4>
+                    <ul class="footer-link-list">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li class="footer-project-note">Developed for UIU Project</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 UIU Friends Loan and Crowdfunding Network. All Rights Reserved.</p>
+                <p>Not an official UIU entity. Built by students, for students.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="homepagescript.js"></script>
+</body>
+</html>

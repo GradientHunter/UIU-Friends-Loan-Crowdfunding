@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews &amp; Trust Score - UIU Friends Loan</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="reviews_trust.css">
+</head>
+<body>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon-box">
+                <span class="material-symbols-outlined">handshake</span>
+            </div>
+            <div>
+                <h1>UIU Friends</h1>
+                <p>Loan Network</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-link">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="marketplace.html" class="nav-link">
+                <span class="material-symbols-outlined">payments</span>
+                <span>Loans</span>
+            </a>
+            <a href="crowdfunding.html" class="nav-link">
+                <span class="material-symbols-outlined">groups</span>
+                <span>Crowdfunding</span>
+            </a>
+            <a href="#" class="nav-link">
+                <span class="material-symbols-outlined">person_add</span>
+                <span>Friends</span>
+            </a>
+            <a href="reviews_trust.html" class="nav-link active">
+                <span class="material-symbols-outlined">verified_user</span>
+                <span>Reviews &amp; Trust</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="trust-box">
+                <p class="label">Current Trust Score</p>
+                <div class="trust-row" style="align-items: center; justify-content: space-between; gap: 8px;">
+                    <div class="stars" style="font-size: 14px; color: #f59e0b; display: flex; gap: 1px;">
+                        <span class="material-symbols-outlined" style="font-size: 16px; font-variation-settings: 'FILL' 1; color: #f59e0b;">star</span>
+                        <span class="material-symbols-outlined" style="font-size: 16px; font-variation-settings: 'FILL' 1; color: #f59e0b;">star</span>
+                        <span class="material-symbols-outlined" style="font-size: 16px; font-variation-settings: 'FILL' 1; color: #f59e0b;">star</span>
+                        <span class="material-symbols-outlined" style="font-size: 16px; font-variation-settings: 'FILL' 1; color: #f59e0b;">star</span>
+                        <span class="material-symbols-outlined" style="font-size: 16px; font-variation-settings: 'FILL' 1; color: #f59e0b;">star</span>
+                    </div>
+                    <span class="excellent-pill">EXCELLENT</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN ===== -->
+    <div class="main-wrap">
+
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="search-box">
+                <span class="material-symbols-outlined">search</span>
+                <input type="text" class="search-input" placeholder="Search friends or campaigns...">
+            </div>
+
+            <div class="header-right">
+                <button class="notif-btn">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="notif-dot"></span>
+                </button>
+
+                <div class="user-group">
+                    <div>
+                        <p class="uname">Loading...</p>
+                        <p class="uid" id="rt-user-id">ID: —</p>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=UIU+User&background=1E3A8A&color=fff" alt="Profile">
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Area -->
+        <div class="page-area">
+
+            <!-- Profile Header Card -->
+            <div class="profile-card">
+                <div class="avatar-wrap">
+                    <img src="https://ui-avatars.com/api/?name=UIU+User&background=1E3A8A&color=fff" alt="User">
+                    <div class="verified-check">
+                        <span class="material-symbols-outlined">verified</span>
+                    </div>
+                </div>
+
+                <div class="profile-info">
+                    <h2 id="rt-user-name">Loading...</h2>
+                    <p class="dept">BSc in Computer Science, Batch 201</p>
+                    <div class="badge-row">
+                        <span class="badge blue">
+                            <span class="material-symbols-outlined">badge</span>
+                            UIU ID Verified
+                        </span>
+                        <span class="badge green">
+                            <span class="material-symbols-outlined">security</span>
+                            Admin Approved
+                        </span>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="method-box">
+                    <p class="mlabel">Preferred Method</p>
+                    <div class="mval">
+                        <span class="material-symbols-outlined">chat</span>
+                        <span id="rt-preferred-method">—</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two Column Layout -->
+            <div class="two-col">
+
+                <!-- Left Column -->
+                <div class="left-col">
+
+                    <div class="gauge-card">
+                        <p class="gauge-title">Trust Score Rating</p>
+                        <div class="stars-wrap" style="display: flex; gap: 4px; margin-bottom: 24px; margin-top: 12px; color: #f59e0b;">
+                            <span class="material-symbols-outlined" style="font-size: 36px; font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined" style="font-size: 36px; font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined" style="font-size: 36px; font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined" style="font-size: 36px; font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined" style="font-size: 36px; font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <div class="exc-badge">Excellent Borrower</div>
+                        <p class="gauge-note" id="rt-gauge-note">Loading...</p>
+                    </div>
+
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+
+                        <div class="stat-box">
+                            <p class="stat-lbl">Total Repaid</p>
+                            <div class="stat-row">
+                                <span class="stat-val" id="rt-stat-repaid">—</span>
+                                <div class="icon-box green">
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-box">
+                            <p class="stat-lbl">Total Lent</p>
+                            <div class="stat-row">
+                                <span class="stat-val" id="rt-stat-lent">— <span class="unit">BDT</span></span>
+                                <div class="icon-box blue">
+                                    <span class="material-symbols-outlined">account_balance_wallet</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-box red-left">
+                            <p class="stat-lbl">Late Payments</p>
+                            <div class="stat-row">
+                                <span class="stat-val" id="rt-stat-late">—</span>
+                                <div class="icon-box red">
+                                    <span class="material-symbols-outlined">schedule</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-box">
+                            <p class="stat-lbl">Crowdfunding</p>
+                            <div class="stat-row">
+                                <span class="stat-val" id="rt-stat-crowdfunding">—</span>
+                                <div class="icon-box gray">
+                                    <span class="material-symbols-outlined">volunteer_activism</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="activity-card">
+                        <p class="act-title">Recent Activity</p>
+                        <div id="rt-activity-container" style="padding:8px 0; color:#94a3b8; font-size:13px; text-align:center;">Loading activity...</div>
+
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Reviews -->
+                <div class="right-col">
+
+                    <div class="reviews-header">
+                        <h3>Ratings &amp; Reviews</h3>
+                        <div class="sort-btns">
+                            <button class="sort-btn active" onclick="setSort(this)">Latest</button>
+                            <button class="sort-btn" onclick="setSort(this)">Highest Rated</button>
+                        </div>
+                    </div>
+
+                    <div class="reviews-list">
+                        <p style="padding:24px; text-align:center; color:#94a3b8; font-size:13px;">Loading reviews...</p>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="cta-box">
+                        <p>Want to improve your trust score?</p>
+                        <button class="cta-btn">Verify Extra Documents</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="reviews_trust.js"></script>
+
+</body>
+</html>

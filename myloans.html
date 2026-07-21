@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>My Loans - UIU Friends Network</title>
+  <!-- Google Fonts & Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="myloansstyle.css"/>
+</head>
+<body>
+  
+  <div class="app-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo-circle">
+          <span class="material-symbols-outlined">handshake</span>
+        </div>
+        <div class="brand-text">
+          <h1>UIU Friends</h1>
+          <p>Network</p>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a class="nav-item" href="dashboard.html">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span class="text">Dashboard</span>
+        </a>
+        <a class="nav-item" href="marketplace.html">
+          <span class="material-symbols-outlined">storefront</span>
+          <span class="text">Loan Marketplace</span>
+        </a>
+        <a class="nav-item" href="crowdfunding.html">
+          <span class="material-symbols-outlined">volunteer_activism</span>
+          <span class="text">Crowdfunding Hub</span>
+        </a>
+        <a class="nav-item active" href="myloans.html">
+          <span class="material-symbols-outlined">account_balance_wallet</span>
+          <span class="text">My Loans</span>
+        </a>
+        <a class="nav-item" href="profile.html">
+          <span class="material-symbols-outlined">settings</span>
+          <span class="text">Settings</span>
+        </a>
+      </nav>
+      
+      <div class="sidebar-bottom">
+        <a class="nav-item support-link" href="#">
+          <span class="material-symbols-outlined">help</span>
+          <span class="text">Help & Support</span>
+        </a>
+        <a class="nav-item logout-link" href="login.html">
+          <span class="material-symbols-outlined">logout</span>
+          <span class="text">Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="search-container">
+          <span class="material-symbols-outlined search-icon">search</span>
+          <input class="search-input" id="searchInput" placeholder="Search investments or borrowers..." type="text"/>
+        </div>
+        
+        <div class="header-actions">
+          <div id="myloans-verification-badge" class="ml-badge unverified" style="font-size: 12px; padding: 4px 10px; border-radius: 8px; font-weight: bold; display: inline-flex; align-items: center; gap: 4px;">⚠ Unverified</div>
+          <button class="notification-btn" id="notifBtn">
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="notification-dot"></span>
+          </button>
+          
+          <a href="profile.html" class="user-profile" style="text-decoration: none; display: flex; align-items: center; gap: 10px; color: inherit;">
+            <div class="user-details">
+              <p class="user-name">Loading...</p>
+              <p class="user-trust" style="color: #eab308; font-size: 13px; letter-spacing: 1px;">★★★★★</p>
+            </div>
+            <div class="user-avatar-circle">
+              <img alt="User Profile" src="https://ui-avatars.com/api/?name=UIU+User&background=1E3A8A&color=fff"/>
+            </div>
+          </a>
+        </div>
+      </header>
+
+      <!-- Page Area -->
+      <div class="page-container">
+        
+        <!-- Page Header -->
+        <div class="page-header">
+          <h2 class="page-title">My Loans</h2>
+          <p class="page-subtitle">Track your investments, upcoming repayments, and support history.</p>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="tabs-container">
+          <div class="tabs-bar">
+            <button class="tab-btn active" id="borrowedTabBtn">Money I Borrowed</button>
+            <button class="tab-btn" id="lentTabBtn">Money I Lent</button>
+          </div>
+        </div>
+
+        <!-- Money I Borrowed View (My Loans Tracker) -->
+        <div class="tab-view-content" id="borrowedView">
+          
+          <!-- Summary Cards Grid -->
+          <div class="summary-cards-grid">
+            
+            <div class="summary-card">
+              <p class="card-label">Total Outstanding Debt</p>
+              <p class="card-value" id="borrowed-total-debt">0 BDT</p>
+              <div class="card-footer-info success-text" id="borrowed-total-debt-footer">
+                <span class="material-symbols-outlined">trending_down</span>
+                <span>Calculated dynamically</span>
+              </div>
+            </div>
+
+            <div class="summary-card" style="border-right: 4px solid var(--primary);">
+              <p class="card-label">Next Installment Due</p>
+              <p class="card-value" id="borrowed-next-due">0 BDT</p>
+              <div class="card-footer-info label-gray uppercase" style="color: var(--primary); font-weight: bold;" id="borrowed-next-due-footer">
+                <span class="material-symbols-outlined">schedule</span>
+                <span>Calculated dynamically</span>
+              </div>
+            </div>
+
+            <div class="summary-card">
+              <p class="card-label">Loans Successfully Paid</p>
+              <div class="card-value" style="display: flex; align-items: center; gap: 8px;">
+                <span id="borrowed-paid-count">0</span>
+                <span class="material-symbols-outlined" style="color: var(--emerald); font-size: 24px;">check_circle</span>
+              </div>
+              <div class="card-footer-info label-gray" id="borrowed-paid-footer">
+                <span>No history yet</span>
+              </div>
+            </div>
+            
+          </div>
+
+          <!-- Dynamic Active Loans Container -->
+          <div id="myloans-active-container">
+             <!-- Active Loan Tracker Cards will be rendered here dynamically -->
+          </div>
+
+          <!-- Secondary Grid Layout -->
+          <div class="secondary-grid">
+            
+            <!-- Column 1: Dynamic Pending Loan Requests & Bids -->
+            <div class="pending-requests-section" id="myloans-pending-container">
+              <!-- Dynamically populated pending requests and bids comparison -->
+            </div>
+
+            <!-- Column 2: Dynamic Completed Loans -->
+            <div class="completed-loans-section" id="myloans-completed-container">
+              <!-- Dynamically populated completed loans -->
+            </div>
+
+          </div>
+
+        </div> <!-- /borrowedView -->
+
+        <!-- Money I Lent View -->
+        <div class="tab-view-content hidden" id="lentView">
+          
+          <!-- Summary Cards Grid -->
+          <div class="summary-cards-grid">
+            
+            <div class="summary-card">
+              <p class="card-label">Total Active Investments</p>
+              <p class="card-value value-emerald" id="lent-total-invested">0 BDT</p>
+              <div class="card-footer-info success-text" id="lent-total-invested-footer">
+                <span class="material-symbols-outlined">trending_up</span>
+                <span>Calculated dynamically</span>
+              </div>
+            </div>
+
+            <div class="summary-card">
+              <p class="card-label">Expected In Next 7 Days</p>
+              <p class="card-value" id="lent-expected-repay">0 BDT</p>
+              <div class="card-footer-info label-gray uppercase" id="lent-expected-repay-footer">
+                <span>Principal + Interest Included</span>
+              </div>
+            </div>
+
+            <div class="summary-card">
+              <p class="card-label">Total Interest Earned</p>
+              <p class="card-value value-orange" id="lent-total-interest">0 BDT</p>
+              <div class="card-footer-info label-gray" id="lent-total-interest-footer">
+                <span class="material-symbols-outlined">history</span>
+                <span>Calculated dynamically</span>
+              </div>
+            </div>
+            
+          </div>
+
+          <!-- Active Investments Container -->
+          <div id="myloans-lent-active-container">
+             <!-- Active investment cards rendered dynamically -->
+          </div>
+
+          <!-- Overdue Investments Container -->
+          <div id="myloans-lent-overdue-container">
+             <!-- Overdue investments rendered dynamically -->
+          </div>
+
+          <!-- Completed Returns Section -->
+          <div class="completed-returns-section" id="myloans-lent-completed-container">
+             <!-- Completed returns rendered dynamically -->
+          </div>
+
+        </div> <!-- /lentView -->
+
+      </div>
+    </main>
+    
+  </div>
+
+  <!-- Confirm Modal for Bid Acceptance -->
+  <div id="myloans-confirm-modal" class="myloans-confirm-overlay">
+    <div class="myloans-confirm-box">
+      <h3 class="myloans-confirm-title">✅ Accept This Offer?</h3>
+      <p class="myloans-confirm-sub">You are selecting this lender offer. All other offers on this request will be closed.</p>
+      <div class="myloans-confirm-details" id="myloans-confirm-details"></div>
+      <div class="myloans-confirm-footer">
+        <button onclick="closeMlConfirmModal()" class="myloans-btn-cancel">Cancel</button>
+        <button onclick="acceptMlOffer()" class="myloans-btn-accept">
+          <span class="material-symbols-outlined" style="font-size:16px;">handshake</span> Accept &amp; Lock Offer
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast (Dynamic) -->
+  <div class="alert-toast" id="alertToast">
+    <div class="toast-content">
+      <span class="material-symbols-outlined toast-icon">info</span>
+      <p class="toast-message" id="toastMessage">Reminder sent successfully!</p>
+    </div>
+  </div>
+
+  <script src="myloansscript.js"></script>
+</body>
+</html>

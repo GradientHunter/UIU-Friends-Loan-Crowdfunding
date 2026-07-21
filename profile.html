@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trust Score &amp; Profile - UIU Friends Loan</title>
+    <link rel="stylesheet" href="profilestyle.css">
+</head>
+<body>
+    <div class="app-container">
+
+        <!-- Top Navbar -->
+        <header class="top-nav">
+            <div class="nav-brand-group">
+                <div class="brand-logo">
+                    <span class="material-symbols-outlined fill-1" style="font-size: 1.875rem;">handshake</span>
+                    <h2>UIU Friends Loan</h2>
+                </div>
+                <nav class="nav-links">
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="marketplace.html">Loans</a>
+                    <a href="crowdfunding.html">Crowdfunding</a>
+                    <a href="#">Community</a>
+                </nav>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <div class="search-icon">
+                        <span class="material-symbols-outlined">search</span>
+                    </div>
+                    <input type="text" class="search-input" placeholder="Search loans or users">
+                </div>
+
+                <div class="icon-buttons">
+                    <button class="icon-btn">
+                        <span class="material-symbols-outlined">notifications</span>
+                    </button>
+                    <button class="icon-btn">
+                        <span class="material-symbols-outlined">settings</span>
+                    </button>
+                </div>
+
+                <div class="user-avatar" id="profile-sidebar-avatar" style="background-image: url('https://ui-avatars.com/api/?name=Loading&background=1E3A8A&color=fff');"></div>
+            </div>
+        </header>
+
+        <div class="body-wrapper">
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-user">
+                    <h1 class="sidebar-user-name">Loading...</h1>
+                    <p>ID: 011191000 | CSE</p>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a class="sidebar-item" href="dashboard.html">
+                        <span class="material-symbols-outlined">home</span>
+                        <p>Home</p>
+                    </a>
+                    <a class="sidebar-item" href="myloans.html">
+                        <span class="material-symbols-outlined">account_balance_wallet</span>
+                        <p>My Loans</p>
+                    </a>
+                    <a class="sidebar-item" href="agreement.html">
+                        <span class="material-symbols-outlined">handshake</span>
+                        <p>Active Agreements</p>
+                    </a>
+                    <a class="sidebar-item" href="crowdfunding.html">
+                        <span class="material-symbols-outlined">groups</span>
+                        <p>Crowdfunding</p>
+                    </a>
+                    <a class="sidebar-item" href="reviews_trust.html">
+                        <span class="material-symbols-outlined fill-1">shield_with_heart</span>
+                        <p>Reviews &amp; Trust Score</p>
+                    </a>
+                    <a class="sidebar-item" href="profile.html">
+                        <span class="material-symbols-outlined">settings</span>
+                        <p>Settings &amp; Profile</p>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+
+                <!-- Identity Header -->
+                <div class="identity-header">
+                    <div class="identity-info-group">
+                        <div class="profile-pic-container">
+                            <div class="profile-pic" id="profilePicDiv" style="background-image: url('https://ui-avatars.com/api/?name=Loading&background=1E3A8A&color=fff');"></div>
+                            <div class="verified-badge">
+                                <span class="material-symbols-outlined">check</span>
+                            </div>
+                            <!-- Hidden file input for photo upload (Fix #3) -->
+                            <input type="file" id="profilePhotoInput" accept="image/jpeg,image/png,image/webp" style="display:none;">
+                            <!-- Camera icon button overlaid on the avatar -->
+                            <button type="button" id="changePhotoBtn" title="Change profile photo" style="position:absolute;bottom:4px;right:4px;background:#1E3A8A;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;">
+                                <span class="material-symbols-outlined" style="color:white;font-size:16px;">photo_camera</span>
+                            </button>
+                        </div>
+                        <div class="user-details">
+                            <h3 id="profile-full-name">Loading...</h3>
+                            <p class="dept" id="profile-dept">UIU Student</p>
+                            <p class="student-id" id="profile-student-id">Student ID: —</p>
+                            <div class="badges">
+                                <span class="badge verified-identity">
+                                    <span class="material-symbols-outlined" style="font-size:0.875rem;">verified</span>
+                                    Verified Identity
+                                </span>
+                                <span class="badge verified-phone">
+                                    <span class="material-symbols-outlined" style="font-size:0.875rem;">phone_iphone</span>
+                                    Phone Verified
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trust-score-container">
+                        <div class="gauge-wrapper">
+                            <svg class="gauge-svg" viewBox="0 0 200 200">
+                                <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="20"/>
+                                <circle cx="100" cy="100" r="80" fill="none" stroke="#34d399" stroke-width="20"
+                                    stroke-dasharray="502" stroke-dashoffset="100" stroke-linecap="round"
+                                    transform="rotate(-90 100 100)"/>
+                            </svg>
+                            <div class="gauge-text">
+                                <span class="gauge-percentage" style="font-size: 1.25rem; color: #34d399;">★★★★★</span>
+                                <span class="gauge-label">Trust Score</span>
+                            </div>
+                        </div>
+                        <p class="trust-score-label">UIU Community Trust Rating</p>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tabs-container">
+                    <nav class="tabs-nav">
+                        <a href="#" class="tab-link active" id="tab-profile" onclick="showTab(event,'profile')">
+                            <span class="material-symbols-outlined" style="font-size:1rem;">person</span>
+                            Profile
+                        </a>
+                        <a href="#" class="tab-link" id="tab-reviews" onclick="showTab(event,'reviews')">
+                            <span class="material-symbols-outlined" style="font-size:1rem;">star</span>
+                            Reviews &amp; Trust Score
+                        </a>
+                        <a href="#" class="tab-link" id="tab-verification" onclick="showTab(event,'verification')">
+                            <span class="material-symbols-outlined" style="font-size:1rem;">verified_user</span>
+                            Verification Center
+                            <span class="notification-dot"></span>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Tab Content: Profile -->
+                <div id="content-profile">
+                    <div class="bottom-grid">
+
+                        <!-- Edit Profile Info -->
+                        <div class="section-column" style="grid-column: 1 / -1;">
+                            <div class="section-header">
+                                <h4>Profile Information</h4>
+                                <button id="edit-profile-btn" onclick="toggleProfileEdit()" style="background:none; border:1px solid #e2e8f0; border-radius:8px; padding:5px 12px; font-size:13px; font-weight:700; color:#1E3A8A; cursor:pointer; display:flex; align-items:center; gap:4px;">
+                                    <span class="material-symbols-outlined" style="font-size:15px;">edit</span> Edit
+                                </button>
+                            </div>
+                            <!-- Read-only display -->
+                            <div id="profile-display" style="display:flex; flex-wrap:wrap; gap:16px; padding:4px 0;">
+                                <div style="flex:1; min-width:200px;">
+                                    <p style="font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase; margin:0 0 4px;">Full Name</p>
+                                    <p id="display-full-name" style="font-size:15px; font-weight:600; color:#1e293b; margin:0;">—</p>
+                                </div>
+                                <div style="flex:1; min-width:200px;">
+                                    <p style="font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase; margin:0 0 4px;">Email</p>
+                                    <p id="display-email" style="font-size:15px; font-weight:600; color:#1e293b; margin:0;">—</p>
+                                </div>
+                                <div style="flex:1; min-width:200px;">
+                                    <p style="font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase; margin:0 0 4px;">Phone</p>
+                                    <p id="display-phone" style="font-size:15px; font-weight:600; color:#1e293b; margin:0;">—</p>
+                                </div>
+                                <div style="flex:1; min-width:200px;">
+                                    <p style="font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase; margin:0 0 4px;">Department</p>
+                                    <p id="display-department" style="font-size:15px; font-weight:600; color:#1e293b; margin:0;">—</p>
+                                </div>
+                            </div>
+                            <!-- Edit form (hidden by default) -->
+                            <div id="profile-edit-form" style="display:none; margin-top:16px;">
+                                <div style="display:flex; flex-wrap:wrap; gap:14px;">
+                                    <div style="flex:1; min-width:200px;">
+                                        <label style="font-size:12px; font-weight:700; color:#374151; display:block; margin-bottom:5px;">Full Name</label>
+                                        <input type="text" id="edit-full-name" style="width:100%; padding:10px 14px; border:2px solid #e2e8f0; border-radius:10px; font-size:14px; outline:none; background:#f8fafc; box-sizing:border-box;" />
+                                    </div>
+                                    <div style="flex:1; min-width:200px;">
+                                        <label style="font-size:12px; font-weight:700; color:#374151; display:block; margin-bottom:5px;">Phone Number</label>
+                                        <input type="text" id="edit-phone" style="width:100%; padding:10px 14px; border:2px solid #e2e8f0; border-radius:10px; font-size:14px; outline:none; background:#f8fafc; box-sizing:border-box;" />
+                                    </div>
+                                    <div style="flex:1; min-width:200px;">
+                                        <label style="font-size:12px; font-weight:700; color:#374151; display:block; margin-bottom:5px;">Department</label>
+                                        <input type="text" id="edit-department" style="width:100%; padding:10px 14px; border:2px solid #e2e8f0; border-radius:10px; font-size:14px; outline:none; background:#f8fafc; box-sizing:border-box;" />
+                                    </div>
+                                </div>
+                                <div style="display:flex; gap:10px; margin-top:14px;">
+                                    <button onclick="saveProfileInfo()" style="background:#1E3A8A; color:white; border:none; padding:10px 24px; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer;">Save Changes</button>
+                                    <button onclick="toggleProfileEdit()" style="background:#f1f5f9; color:#475569; border:1px solid #e2e8f0; padding:10px 20px; border-radius:10px; font-size:14px; font-weight:600; cursor:pointer;">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Methods -->
+                        <div class="section-column">
+                            <div class="section-header">
+                                <h4>Payment Methods</h4>
+                                <span>Manage</span>
+                            </div>
+
+                            <!-- Dynamic payment methods rendered by JS -->
+                            <div id="payment-methods-list"></div>
+
+                            <button class="add-card-btn" onclick="openAddPaymentModal()">
+                                <span class="material-symbols-outlined">add_circle</span>
+                                <span class="font-bold">Add New Payment Method</span>
+                            </button>
+                        </div>
+
+                        <!-- Add Payment Method Modal -->
+                        <div id="add-payment-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+                            <div style="background:#fff; border-radius:16px; padding:28px; max-width:420px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.2);">
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                                    <h3 style="font-size:18px; font-weight:800; color:#1e293b; margin:0;">Add Payment Method</h3>
+                                    <button onclick="closeAddPaymentModal()" style="background:none; border:none; cursor:pointer; color:#64748b; font-size:20px;">✕</button>
+                                </div>
+                                <div style="margin-bottom:14px;">
+                                    <label style="font-size:13px; font-weight:700; color:#374151; display:block; margin-bottom:6px;">Method Type</label>
+                                    <select id="pm-type" style="width:100%; padding:10px 14px; border:2px solid #e2e8f0; border-radius:10px; font-size:14px; outline:none; background:#f8fafc;">
+                                        <option value="bkash">bKash</option>
+                                        <option value="nagad">Nagad</option>
+                                        <option value="bank">Bank Account</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div style="margin-bottom:14px;">
+                                    <label style="font-size:13px; font-weight:700; color:#374151; display:block; margin-bottom:6px;">Account Number / Phone</label>
+                                    <input type="text" id="pm-number" placeholder="e.g. +880 1X-XXXXXXXX" style="width:100%; padding:10px 14px; border:2px solid #e2e8f0; border-radius:10px; font-size:14px; outline:none; background:#f8fafc; box-sizing:border-box;" />
+                                </div>
+                                <div style="margin-bottom:20px;">
+                                    <label style="font-size:13px; font-weight:700; color:#374151; display:block; margin-bottom:6px;">Account Holder Name</label>
+                                    <input type="text" id="pm-name" placeholder="Full name on account" style="width:100%; padding:10px 14px; border:2px solid #e2e8f0; border-radius:10px; font-size:14px; outline:none; background:#f8fafc; box-sizing:border-box;" />
+                                </div>
+                                <button onclick="savePaymentMethod()" style="width:100%; background:#1E3A8A; color:white; border:none; padding:12px; border-radius:10px; font-size:15px; font-weight:700; cursor:pointer;">Save Payment Method</button>
+                            </div>
+                        </div>
+
+                        <!-- Reviews -->
+                        <div class="section-column">
+                            <div class="section-header">
+                                <h4>Peer Reviews</h4>
+                                <span id="profile-avg-rating">— ★ Avg.</span>
+                            </div>
+
+                            <div class="review-box">
+                                <p class="review-box-title">Leave a Review</p>
+                                <div class="review-form">
+                                    <div class="review-top-row">
+                                        <select class="form-select">
+                                            <option value="">Loading agreements...</option>
+                                        </select>
+                                        <div class="star-rating" id="starRating">
+                                            <span class="material-symbols-outlined" onclick="setRating(1)">star</span>
+                                            <span class="material-symbols-outlined" onclick="setRating(2)">star</span>
+                                            <span class="material-symbols-outlined" onclick="setRating(3)">star</span>
+                                            <span class="material-symbols-outlined" onclick="setRating(4)">star</span>
+                                            <span class="material-symbols-outlined" onclick="setRating(5)">star</span>
+                                        </div>
+                                    </div>
+                                    <textarea class="form-textarea" rows="3" placeholder="Share your experience with this student..."></textarea>
+                                    <button class="submit-review-btn" onclick="submitReview()">Submit Review</button>
+                                </div>
+                            </div>
+
+                            <!-- Dynamic review feed rendered by profilescript.js -->
+                            <div class="review-feed">
+                                <p class="feed-title">Recent Reviews</p>
+                                <p style="font-size:13px; color:#94a3b8; text-align:center; padding:16px;">Loading reviews...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Reviews & Trust Score -->
+                <div id="content-reviews" class="hidden">
+                    <div style="text-align:center; padding: 40px 20px; color: #64748b;">
+                        <span class="material-symbols-outlined" style="font-size: 48px; color: #1E3A8A;">verified_user</span>
+                        <p style="margin-top: 12px; font-size: 16px; font-weight: 600;">Full Reviews &amp; Trust Score Page</p>
+                        <p style="font-size: 14px; margin-top: 6px;">See the detailed trust score and all peer reviews.</p>
+                        <a href="reviews_trust.html" style="display:inline-block; margin-top: 20px; background: #1E3A8A; color: #fff; padding: 12px 28px; border-radius: 10px; font-weight: 700; text-decoration: none;">Open Full Page →</a>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Verification Center -->
+                <div id="content-verification" class="hidden">
+                    <div style="max-width: 540px; margin: 0 auto; padding: 24px 0;">
+                        <div style="background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:28px; box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                            <h3 style="font-size:18px; font-weight:800; color:#1e293b; margin-bottom:6px;">🎓 UIU Student Verification</h3>
+                            <p style="font-size:13px; color:#64748b; margin-bottom:20px;">Verify your UIU student identity to unlock bidding, lending and crowdfunding features.</p>
+
+                            <div id="verification-status-box" style="margin-bottom:20px;"></div>
+
+                            <div id="verification-form">
+                                <div style="margin-bottom:14px;">
+                                    <label style="font-size:12px; font-weight:700; color:#334155; display:block; margin-bottom:6px;">UIU Student ID</label>
+                                    <input type="text" id="v-student-id" placeholder="e.g. 011XXXXXXX" style="width:100%; padding:11px 16px; background:#f8fafc; border:2px solid #e2e8f0; border-radius:10px; font-size:14px; outline:none; color:#1e293b; font-family:inherit;">
+                                </div>
+                                <div style="margin-bottom:14px;">
+                                    <label style="font-size:12px; font-weight:700; color:#334155; display:block; margin-bottom:6px;">UIU Institutional Email</label>
+                                    <input type="email" id="v-student-email" placeholder="e.g. student@bscse.uiu.ac.bd" style="width:100%; padding:11px 16px; background:#f8fafc; border:2px solid #e2e8f0; border-radius:10px; font-size:14px; outline:none; color:#1e293b; font-family:inherit;">
+                                </div>
+                                <div style="background:#eff6ff; border-radius:10px; padding:12px 14px; font-size:12px; color:#1e40af; margin-bottom:18px; display:flex; gap:8px; align-items:flex-start;">
+                                    <span class="material-symbols-outlined" style="font-size:18px; flex-shrink:0;">info</span>
+                                    <p style="margin:0;">Email must end with <strong>uiu.ac.bd</strong>. Only UIU students can participate in loans and crowdfunding.</p>
+                                </div>
+                                <button onclick="submitProfileVerification()" style="width:100%; background:#1E3A8A; color:#fff; border:none; border-radius:10px; padding:12px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit;">
+                                    ✔ Verify My UIU Identity
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="profilescript.js"></script>
+    <script>
+        function showTab(e, tabName) {
+            e.preventDefault();
+            var tabs = ['profile', 'reviews', 'verification'];
+            tabs.forEach(function(t) {
+                document.getElementById('content-' + t).classList.add('hidden');
+                document.getElementById('tab-' + t).classList.remove('active');
+            });
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+            document.getElementById('tab-' + tabName).classList.add('active');
+        }
+
+        function setRating(n) {
+            var stars = document.querySelectorAll('#starRating .material-symbols-outlined');
+            stars.forEach(function(s, i) {
+                s.classList.toggle('active', i < n);
+                s.style.fontVariationSettings = i < n ? "'FILL' 1" : "'FILL' 0";
+                s.style.color = i < n ? '#facc15' : '';
+            });
+        }
+
+        function submitReview() {
+            alert('Review submitted successfully!');
+        }
+
+        function submitProfileVerification() {
+            var studentId = document.getElementById('v-student-id').value.trim();
+            var studentEmail = document.getElementById('v-student-email').value.trim();
+            if (!studentId) { alert('Please enter your UIU Student ID.'); return; }
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@.*uiu.*\.ac\.bd$/;
+            if (!emailPattern.test(studentEmail)) { alert('Please enter a valid UIU email (e.g. student@bscse.uiu.ac.bd).'); return; }
+            localStorage.setItem('uiu_verified', 'true');
+            localStorage.setItem('uiu_student_id', studentId);
+            localStorage.setItem('uiu_student_email', studentEmail);
+            var box = document.getElementById('verification-status-box');
+            box.innerHTML = '<div style="background:#d1fae5;border:1px solid #a7f3d0;border-radius:10px;padding:14px 16px;display:flex;gap:10px;align-items:center;"><span class=\"material-symbols-outlined\" style=\"color:#065f46;\">verified</span><div><p style=\"font-size:14px;font-weight:700;color:#065f46;margin:0;\">Verified!</p><p style=\"font-size:12px;color:#047857;margin:2px 0 0;\">Student ID: ' + studentId + ' | ' + studentEmail + '</p></div></div>';
+        }
+
+        // Check verification status on load
+        document.addEventListener('DOMContentLoaded', function() {
+            var box = document.getElementById('verification-status-box');
+            if (localStorage.getItem('uiu_verified') === 'true') {
+                var sid = localStorage.getItem('uiu_student_id') || '-';
+                var sem = localStorage.getItem('uiu_student_email') || '-';
+                box.innerHTML = '<div style="background:#d1fae5;border:1px solid #a7f3d0;border-radius:10px;padding:14px 16px;display:flex;gap:10px;align-items:center;"><span class=\"material-symbols-outlined\" style=\"color:#065f46;\">verified</span><div><p style=\"font-size:14px;font-weight:700;color:#065f46;margin:0;\">Already Verified!</p><p style=\"font-size:12px;color:#047857;margin:2px 0 0;\">Student ID: ' + sid + ' | ' + sem + '</p></div></div>';
+            }
+        });
+    </script>
+</body>
+</html>

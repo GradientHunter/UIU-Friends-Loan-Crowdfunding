@@ -1,0 +1,562 @@
+/* =============================================
+   UIU Friends Network - Registration Styles
+   =============================================
+   Table of Contents:
+   1. CSS Variables (colours, fonts)
+   2. Reset & Base
+   3. Layout (two-column wrapper)
+   4. Left Hero Panel
+   5. Feature Cards (inside hero panel)
+   6. Right Form Panel
+   7. Form Inputs
+   8. Email Input (username + suffix)
+   9. ID Upload Section
+   10. Submit Button & Links
+   11. Footer
+   ============================================= */
+
+
+/* ── 1. CSS Variables ────────────────────────
+   Define colours and fonts once here so they
+   can be reused everywhere with var(--name).
+─────────────────────────────────────────────*/
+:root {
+    --primary:        #ec5b13;   /* orange accent */
+    --uiu-blue:       #1E3A8A;   /* main brand blue */
+    --uiu-blue-dark:  #172a6b;   /* darker blue for hover states */
+
+    --bg-light:       #f8f6f6;   /* page background */
+    --bg-dark:        #221610;   /* unused but kept for reference */
+
+    /* Neutral greys (slate scale) */
+    --slate-50:  #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-700: #334155;
+    --slate-900: #0f172a;
+
+    /* Light blues */
+    --blue-50:  #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-200: #bfdbfe;
+
+    --font-main: 'Public Sans', sans-serif;
+}
+
+
+/* ── 2. Reset & Base ─────────────────────────
+   Remove default margins/padding and make
+   border-box sizing the standard everywhere.
+─────────────────────────────────────────────*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-light);
+    color: var(--slate-900);
+    min-height: 100vh;
+    display: flex;
+    align-items: stretch;
+}
+
+/* Material Icons weight/style setting */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+
+/* ── 3. Layout ───────────────────────────────
+   Flex container that puts the hero panel and
+   form panel side by side.
+─────────────────────────────────────────────*/
+.layout-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* ── 4. Left Hero Panel ──────────────────────
+   Hidden on mobile; visible on screens ≥1024px.
+   Dark blue gradient background with white text.
+─────────────────────────────────────────────*/
+.hero-section {
+    display: none;                   /* hidden on mobile */
+    width: 50%;
+    background: linear-gradient(135deg, var(--uiu-blue) 0%, #111827 100%);
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4rem;
+    color: white;
+    overflow: hidden;
+}
+
+/* Show the hero panel on large screens */
+@media (min-width: 1024px) {
+    .hero-section {
+        display: flex;
+    }
+}
+
+/* Faint grid SVG pattern layered behind the content */
+.hero-bg-pattern {
+    position: absolute;
+    inset: 0;           /* stretch to fill the parent */
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.hero-bg-pattern svg {
+    height: 100%;
+    width: 100%;
+}
+
+/* Keeps hero text above the SVG background */
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
+
+/* Brand row: icon + app name */
+.brand-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.brand-icon-wrapper {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+}
+
+.brand-icon-wrapper .material-symbols-outlined {
+    font-size: 1.875rem;
+}
+
+.brand-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Large headline */
+.hero-main-title {
+    font-size: 3rem;
+    line-height: 1.1;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+
+/* Subtitle paragraph below headline */
+.hero-description {
+    color: var(--blue-100);
+    font-size: 1.125rem;
+    max-width: 28rem;
+    line-height: 1.5;
+}
+
+
+/* ── 5. Feature Cards ────────────────────────
+   Two info cards at the bottom of the hero panel.
+─────────────────────────────────────────────*/
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0.75rem;
+}
+
+.feature-icon {
+    color: var(--primary);  /* orange icon */
+    font-size: 1.5rem;
+}
+
+.feature-text h4 {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.feature-text p {
+    font-size: 0.875rem;
+    color: var(--blue-200);
+}
+
+
+/* ── 6. Right Form Panel ─────────────────────
+   White background. Scrollable if the form is
+   taller than the screen.
+─────────────────────────────────────────────*/
+.form-section {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* On large screens, form panel takes 50% width */
+@media (min-width: 1024px) {
+    .form-section {
+        width: 50%;
+    }
+}
+
+/* Inner wrapper: centres and limits content width */
+.form-container {
+    max-width: 42rem;
+    margin: 0 auto;
+    width: 100%;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Title and subtitle above the form */
+.form-header {
+    margin-bottom: 2.5rem;
+}
+
+.form-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--slate-900);
+    margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+    color: var(--slate-500);
+    font-size: 1rem;
+}
+
+/* Progress bar section */
+.progress-section {
+    margin-bottom: 2.5rem;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.progress-step {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--uiu-blue);
+}
+
+.progress-percentage {
+    font-size: 0.875rem;
+    color: var(--slate-400);
+}
+
+/* The grey track */
+.progress-bar-container {
+    width: 100%;
+    height: 0.375rem;
+    background-color: var(--slate-100);
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+/* The filled blue portion (set to 50% for Step 1 of 2) */
+.progress-bar-fill {
+    height: 100%;
+    background-color: var(--uiu-blue);
+    width: 50%;
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+}
+
+/* The form stacks fields vertically with gaps */
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+
+/* ── 7. Form Inputs ──────────────────────────
+   Each field has a floating label that sits on
+   top of the input border.
+─────────────────────────────────────────────*/
+.input-group {
+    position: relative;     /* needed so the label can be positioned on the border */
+    width: 100%;
+}
+
+/* The label floats above the input box */
+.input-label {
+    position: absolute;
+    top: -0.625rem;         /* moves it up to sit on the border */
+    left: 1rem;
+    padding: 0 0.25rem;
+    background-color: white; /* hides the border behind the label text */
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--slate-500);
+    transition: color 0.2s;
+    z-index: 10;
+}
+
+/* Label turns blue when the field is focused */
+.input-group:focus-within .input-label {
+    color: var(--uiu-blue);
+}
+
+/* Shared style for all text/password inputs */
+.form-input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    border: 2px solid var(--slate-100);
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--slate-900);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus {
+    border-color: var(--uiu-blue);
+}
+
+.form-input::placeholder {
+    color: var(--slate-400);
+}
+
+/* Two-column row (single column on mobile, side-by-side on tablets+) */
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr;         /* 1 column on mobile */
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .input-row {
+        grid-template-columns: 1fr 1fr; /* 2 columns on wider screens */
+    }
+}
+
+
+/* ── 8. Email Input ──────────────────────────
+   Username text box on the left, domain suffix
+   block on the right joined together visually.
+─────────────────────────────────────────────*/
+.email-input-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* The username part of the email */
+.email-input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.75rem 0 0 0.75rem;    /* round only the left corners */
+    border: 2px solid var(--slate-100);
+    border-right: none;                     /* remove right border so it merges with suffix */
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--slate-900);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.email-input:focus {
+    border-color: var(--uiu-blue);
+}
+
+/* The "@bscse.uiu.ac.bd" label attached to the right */
+.email-suffix {
+    padding: 1rem 0.75rem;
+    background-color: var(--slate-50);
+    border: 2px solid var(--slate-100);
+    border-left: none;                      /* no left border so it attaches to the input */
+    border-radius: 0 0.75rem 0.75rem 0;    /* round only the right corners */
+    color: var(--slate-500);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+/* Highlight suffix border when the email input is focused */
+.email-input-wrapper:focus-within .email-suffix {
+    border-color: var(--uiu-blue);
+}
+
+
+/* ── 9. ID Upload Section ────────────────────
+   Dashed blue border box with a centred upload
+   button inside.
+─────────────────────────────────────────────*/
+.upload-section {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 2px dashed var(--blue-200);
+    background-color: rgba(239, 246, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Circle icon at the top of the upload box */
+.upload-icon-container {
+    width: 3rem;
+    height: 3rem;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1);
+    margin-bottom: 1rem;
+}
+
+.upload-icon-container .material-symbols-outlined {
+    color: var(--uiu-blue);
+}
+
+.upload-title {
+    font-weight: 700;
+    color: var(--slate-900);
+    margin-bottom: 0.5rem;
+}
+
+.upload-description {
+    font-size: 0.875rem;
+    color: var(--slate-500);
+    max-width: 28rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+/* The upload button (white with blue text) */
+.upload-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: white;
+    border: 1px solid var(--slate-200);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--uiu-blue);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.upload-button:hover {
+    background-color: var(--slate-50);
+}
+
+
+/* ── 10. Submit Button & Auth Links ──────────*/
+.actions-section {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Full-width blue submit button */
+.submit-button {
+    width: 100%;
+    background-color: var(--uiu-blue);
+    color: white;
+    font-weight: 700;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.1);
+}
+
+.submit-button:hover {
+    background-color: var(--uiu-blue-dark);
+}
+
+.submit-button:active {
+    transform: scale(0.98); /* slight press effect */
+}
+
+/* "Already have an account?" link */
+.auth-links {
+    text-align: center;
+    color: var(--slate-500);
+    font-size: 1rem;
+}
+
+.auth-links a {
+    color: var(--uiu-blue);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+}
+
+
+/* ── 11. Footer ──────────────────────────────*/
+.form-footer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--slate-100);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--slate-400);
+}
+
+.footer-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-links a {
+    color: var(--slate-400);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--uiu-blue);
+}

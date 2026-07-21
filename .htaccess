@@ -1,0 +1,18 @@
+# UIU Friends – Apache config
+
+# Suppress PHP errors from leaking into JSON API responses
+# (Errors are logged to server error log instead)
+php_flag display_errors Off
+php_flag log_errors On
+
+# Allow cross-origin requests (CORS handled in PHP, not here)
+Header always set X-Content-Type-Options "nosniff"
+
+# Protect sensitive files
+<FilesMatch "\.(sql|log|env|md)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# No directory listing
+Options -Indexes

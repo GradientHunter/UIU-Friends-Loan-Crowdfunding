@@ -1,0 +1,1182 @@
+/* ================================================================
+   STYLESHEET: UIU Friends Network — Homepage
+   ================================================================
+   HOW THIS FILE IS ORGANIZED:
+   1.  CSS Variables  (colours, transitions)
+   2.  Reset / Base styles
+   3.  Reusable helpers  (.container, .fade-in, glass effect)
+   4.  Header & Navigation
+   5.  Hero Section
+   6.  How It Works Section
+   7.  Security Section
+   8.  Success Stories Section
+   9.  Footer
+   10. Responsive (media queries for different screen sizes)
+   ================================================================ */
+
+
+/* ----------------------------------------------------------------
+   1. CSS VARIABLES
+   Define colours and values once here; use them everywhere below.
+   Changing a colour here changes it on the whole page.
+   ---------------------------------------------------------------- */
+:root {
+    --uiu-blue:       #1E3A8A;   /* main dark blue */
+    --uiu-blue-hover: #1e40af;   /* slightly lighter blue for hover states */
+    --uiu-green:      #10B981;   /* accent green */
+    --uiu-gray:       #F9FAFB;   /* very light grey page background */
+
+    --text-dark:      #0f172a;   /* almost black — main headings */
+    --text-mid:       #334155;   /* medium dark — body text */
+    --text-muted:     #64748b;   /* grey — subtitles / descriptions */
+    --text-light:     #94a3b8;   /* lighter grey — small labels */
+
+    --emerald-100:    #d1fae5;   /* light green background tint */
+    --blue-100:       #dbeafe;   /* light blue background tint */
+    --border-color:   #f1f5f9;   /* very light border / divider */
+    --white:          #ffffff;
+
+    /* Shorthand for smooth transitions on hover effects */
+    --transition: all 0.3s ease;
+}
+
+
+/* ----------------------------------------------------------------
+   2. RESET / BASE STYLES
+   Remove browser default margins/padding so everything looks
+   consistent across Chrome, Firefox, Safari, etc.
+   ---------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* width includes padding, not added on top */
+}
+
+html {
+    scroll-behavior: smooth; /* makes anchor (#section) links scroll smoothly */
+}
+
+body {
+    font-family: 'Inter', sans-serif; /* the Google Font loaded in the HTML */
+    background-color: var(--uiu-gray);
+    color: var(--text-dark);
+    overflow-x: hidden; /* prevents horizontal scroll bar */
+    line-height: 1.5;
+}
+
+/* Remove underlines from links; add smooth colour transition */
+a {
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+/* Images never overflow their containers */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Reset default button browser styles */
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+}
+
+
+/* ----------------------------------------------------------------
+   3. REUSABLE HELPERS
+   These classes are used in many places across the page.
+   ---------------------------------------------------------------- */
+
+/* .container: centres content and adds horizontal padding */
+.container {
+    width: 100%;
+    max-width: 1280px;  /* max width so it doesn't stretch too wide */
+    margin: 0 auto;     /* auto left/right margin = centre */
+    padding: 0 1.5rem;  /* 24px breathing room on both sides */
+}
+
+/* Glass-morphism card effect (frosted glass look) */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);   /* semi-transparent white */
+    backdrop-filter: blur(10px);             /* blurs what is behind the card */
+    -webkit-backdrop-filter: blur(10px);     /* same thing for Safari */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+/* Fade-in animation: elements start invisible and slide up */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* JavaScript adds this class when the element scrolls into view */
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ----------------------------------------------------------------
+   4. HEADER & NAVIGATION
+   ---------------------------------------------------------------- */
+
+/* The fixed bar at the top of the screen */
+.site-header {
+    position: fixed;    /* stays in place even when user scrolls */
+    top: 0;
+    width: 100%;
+    z-index: 50;        /* sits above all other content */
+
+    /* Glass (frosted) background effect */
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    transition: box-shadow 0.3s ease;
+}
+
+/* JavaScript adds this class on scroll to show a subtle shadow */
+.site-header.scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Flexbox row that holds logo, nav links, and auth buttons */
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    position: relative; /* needed so mobile-menu can position below it */
+}
+
+/* ---- Logo ---- */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* space between the blue square and the text */
+}
+
+.logo-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--uiu-blue);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.logo-name {
+    color: var(--uiu-blue);
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: -0.025em;
+}
+
+/* ---- Desktop Nav Links ---- */
+.desktop-nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.desktop-nav a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.desktop-nav a:hover {
+    color: var(--uiu-blue);
+}
+
+/* ---- Auth Buttons (Sign In + Register) ---- */
+.header-auth {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.link-signin {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--uiu-blue);
+}
+
+.link-signin:hover {
+    text-decoration: underline;
+}
+
+.btn-register {
+    background-color: var(--uiu-blue);
+    color: var(--white);
+    padding: 0.625rem 1.25rem;
+    border-radius: 9999px;  /* pill shape */
+    font-size: 0.875rem;
+    font-weight: 700;
+    box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.2), 0 4px 6px -4px rgba(30, 58, 138, 0.2);
+    transition: var(--transition);
+}
+
+.btn-register:hover {
+    background-color: var(--uiu-blue-hover);
+}
+
+/* ---- Hamburger button (only shown on small screens) ---- */
+.mobile-toggle {
+    display: none; /* hidden by default; shown in the media query below */
+    color: var(--uiu-blue);
+    font-size: 1.5rem;
+}
+
+/* ---- Mobile dropdown menu ---- */
+.mobile-menu {
+    display: none; /* hidden by default */
+    flex-direction: column;
+    padding: 1.5rem;
+    background: var(--white);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* JavaScript adds class "active" to show the menu */
+.mobile-menu.active {
+    display: flex;
+}
+
+.mobile-menu a {
+    padding: 0.75rem 0;
+    color: var(--text-dark);
+    font-weight: 500;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mobile-menu a:last-of-type {
+    border-bottom: none;
+}
+
+.mobile-menu .mobile-signin {
+    margin-top: 1rem;
+    color: var(--uiu-blue);
+}
+
+.mobile-menu .mobile-register {
+    margin-top: 1rem;
+    background-color: var(--uiu-blue);
+    color: var(--white);
+    padding: 0.625rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+/* ----------------------------------------------------------------
+   5. HERO SECTION
+   The big banner at the top of the page.
+   ---------------------------------------------------------------- */
+.hero-section {
+    position: relative;  /* so the decorative accent blobs can be positioned inside */
+    padding: 8rem 0 5rem; /* top padding accounts for the fixed header */
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Decorative blue blur circle — top right corner */
+.accent-top-right {
+    position: absolute;
+    top: -5rem;
+    right: -5rem;
+    width: 24rem;
+    height: 24rem;
+    background-color: rgba(219, 234, 254, 0.5);
+    border-radius: 50%;
+    filter: blur(3rem);
+    /* z-index 0 = behind the content */
+    z-index: 0;
+}
+
+/* Decorative green blur circle — bottom left corner */
+.accent-bottom-left {
+    position: absolute;
+    bottom: -5rem;
+    left: -5rem;
+    width: 24rem;
+    height: 24rem;
+    background-color: rgba(209, 250, 229, 0.5);
+    border-radius: 50%;
+    filter: blur(3rem);
+    z-index: 0;
+}
+
+/* The actual text & cards sit above the accent blobs */
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
+
+/* Small green pill label above the headline */
+.hero-badge {
+    display: inline-block;
+    background-color: var(--emerald-100);
+    color: var(--uiu-green);
+    padding: 0.375rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+}
+
+/* Main headline */
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--uiu-blue);
+    line-height: 1.2;
+    max-width: 56rem;
+    margin: 0 auto 1.5rem;
+}
+
+/* The green coloured part of the headline */
+.highlight-green {
+    color: var(--uiu-green);
+}
+
+/* Description paragraph below the headline */
+.hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    max-width: 42rem;
+    margin: 0 auto 2.5rem;
+    line-height: 1.625;
+}
+
+/* Row of CTA buttons */
+.hero-buttons {
+    display: flex;
+    flex-direction: column; /* stacked on mobile */
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+/* Primary (solid blue) button */
+.btn-primary {
+    background-color: var(--uiu-blue);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+    box-shadow: 0 20px 25px -5px rgba(30, 58, 138, 0.2);
+    transition: var(--transition);
+    display: inline-block;
+    width: 100%; /* full width on mobile */
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background-color: var(--uiu-blue-hover);
+}
+
+/* Outline (border only) button */
+.btn-outline {
+    background-color: transparent;
+    color: var(--uiu-blue);
+    border: 2px solid var(--uiu-blue);
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+    transition: var(--transition);
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-outline:hover {
+    background-color: var(--uiu-blue);
+    color: var(--white);
+}
+
+/* Grid that holds the three mockup cards below the buttons */
+.mockup-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 column on mobile */
+    gap: 1.5rem;
+    max-width: 64rem;
+    margin: 3rem auto 0;
+}
+
+/* Each individual card inside the mockup grid */
+.mockup-card {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.mockup-card:hover {
+    transform: translateY(-0.5rem); /* lifts the card slightly on hover */
+}
+
+/* The middle card is pushed down on tablet+ to create a staggered look */
+.mockup-offset {
+    /* applied on larger screens via a media query below */
+}
+
+/* ---- Trust Score Card ---- */
+.trust-circle-wrapper {
+    position: relative;
+    width: 6rem;
+    height: 6rem;
+    margin: 0 auto 1rem;
+}
+
+/* The SVG ring is rotated so progress starts from the top */
+.trust-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+/* The "850" text in the centre of the ring */
+.trust-score-label {
+    position: absolute;
+    inset: 0; /* stretches to fill the wrapper */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--uiu-blue);
+    font-size: 1.25rem;
+}
+
+.mockup-title {
+    font-weight: 700;
+    color: var(--uiu-blue);
+    text-align: center;
+}
+
+.mockup-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-top: 0.25rem;
+}
+
+/* ---- Loan Approved Card ---- */
+.loan-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.loan-check-icon {
+    padding: 0.5rem;
+    background: var(--emerald-100);
+    border-radius: 0.5rem;
+}
+
+/* "LOAN ID: #882" badge */
+.loan-id-badge {
+    background: var(--blue-100);
+    color: var(--uiu-blue);
+    font-size: 0.625rem;
+    font-weight: 700;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.loan-status-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.loan-status-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--uiu-blue);
+    margin-bottom: 1rem;
+}
+
+/* Row with avatar image + student name */
+.loan-student-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.loan-student-avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 1px solid var(--white);
+}
+
+.loan-student-name {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-mid);
+}
+
+.loan-student-term {
+    font-size: 0.625rem;
+    color: var(--text-light);
+}
+
+/* ---- Fundraising Progress Card ---- */
+.fundraise-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--uiu-blue);
+    margin-bottom: 1rem;
+}
+
+/* The grey background track of the progress bar */
+.progress-track {
+    width: 100%;
+    background-color: var(--border-color);
+    height: 0.5rem;
+    border-radius: 9999px;
+    margin-bottom: 0.5rem;
+}
+
+/* The blue filled portion (set to 75%) */
+.progress-fill {
+    background-color: var(--uiu-blue);
+    height: 100%;
+    border-radius: 9999px;
+    width: 75%;
+}
+
+/* Labels below the progress bar */
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.625rem;
+    font-weight: 700;
+}
+
+.progress-raised {
+    color: var(--uiu-blue);
+}
+
+.progress-pct {
+    color: var(--text-light);
+}
+
+/* Stack of overlapping contributor avatars */
+.avatar-stack {
+    display: flex;
+    margin-top: 2rem;
+}
+
+.avatar-stack img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    margin-left: -0.5rem; /* overlap effect */
+}
+
+.avatar-stack img:first-child {
+    margin-left: 0;
+}
+
+/* The "+12" badge at the end of the avatar stack */
+.avatar-more {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    margin-left: -0.5rem;
+    background: var(--uiu-blue);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5rem;
+    font-weight: 700;
+}
+
+
+/* ----------------------------------------------------------------
+   6. HOW IT WORKS SECTION
+   ---------------------------------------------------------------- */
+.hiw-section {
+    padding: 6rem 0;
+    background-color: var(--white);
+}
+
+/* Centred heading block used in multiple sections */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 1.875rem;
+    font-weight: 800;
+    color: var(--uiu-blue);
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    max-width: 36rem;
+    margin: 0 auto;
+}
+
+/* The three steps arranged in a row on desktop */
+.steps-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* stacked on mobile */
+    gap: 3rem;
+}
+
+/* Individual step block */
+.step-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* The square icon box above the step title */
+.step-icon {
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--uiu-gray);
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    transition: var(--transition);
+}
+
+/* On hover: icon box turns blue and icon turns white */
+.step-card:hover .step-icon {
+    background-color: var(--uiu-blue);
+    color: var(--white);
+}
+
+.step-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--uiu-blue);
+    margin-bottom: 0.5rem;
+}
+
+.step-desc {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    line-height: 1.625;
+}
+
+
+/* ----------------------------------------------------------------
+   7. SECURITY SECTION
+   Dark blue background with feature list + decorative card visual
+   ---------------------------------------------------------------- */
+.security-section {
+    padding: 6rem 0;
+    background-color: var(--uiu-blue);
+    color: var(--white);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Two-column layout on desktop (text left, visual right) */
+.security-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* single column on mobile */
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Big heading inside the security section */
+.sec-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+/* Description paragraph (soft blue text on dark blue bg) */
+.sec-desc {
+    color: #bfdbfe; /* light blue */
+    font-size: 1.125rem;
+    margin-bottom: 3rem;
+}
+
+/* Vertical list of feature items */
+.feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Each feature: icon on the left, text on the right */
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+/* Small square icon box */
+.feature-icon {
+    width: 3rem;
+    height: 3rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--uiu-green);
+    flex-shrink: 0; /* don't let it squish when text is long */
+}
+
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.feature-desc {
+    color: #bfdbfe;
+    font-size: 0.875rem;
+}
+
+/* Right column: decorative card (hidden on mobile) */
+.security-visual {
+    display: none; /* shown on desktop via media query */
+    position: relative;
+}
+
+/* Green blurred glow behind the decorative card */
+.sec-glow {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(16, 185, 129, 0.2);
+    filter: blur(100px);
+    border-radius: 50%;
+}
+
+/* The frosted white card */
+.sec-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    backdrop-filter: blur(12px);
+    position: relative; /* sits above the glow */
+}
+
+/* Three coloured dots (like a macOS window) */
+.window-dots {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot-red    { background: #f87171; }
+.dot-yellow { background: #facc15; }
+.dot-green  { background: #4ade80; }
+
+/* Stack of fake UI lines and blocks */
+.sec-card-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Fake text-line bars */
+.sec-line {
+    height: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.sec-line-long  { width: 75%; }
+.sec-line-short { width: 50%; background: rgba(255, 255, 255, 0.1); }
+
+/* The dashed "Security Verification Layer" box */
+.sec-layer-box {
+    height: 96px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sec-layer-label {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.75rem;
+}
+
+/* Two square blocks side by side at the bottom */
+.sec-blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.sec-block {
+    height: 48px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+
+/* ----------------------------------------------------------------
+   8. SUCCESS STORIES SECTION
+   ---------------------------------------------------------------- */
+.stories-section {
+    padding: 6rem 0;
+    background-color: var(--uiu-gray);
+}
+
+/* Top of section: title on left, "View All" link on right */
+.stories-header {
+    display: flex;
+    flex-direction: column; /* stacked on mobile */
+    margin-bottom: 4rem;
+}
+
+/* "View All Stories →" link */
+.view-all-link {
+    display: flex;
+    align-items: center;
+    color: var(--uiu-blue);
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+.view-all-link svg {
+    margin-left: 0.5rem;
+    transition: transform 0.3s;
+}
+
+.view-all-link:hover svg {
+    transform: translateX(4px); /* arrow slides right on hover */
+}
+
+/* Three story cards in a row on desktop */
+.stories-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* stacked on mobile */
+    gap: 2rem;
+}
+
+/* Individual white story card */
+.story-card {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.story-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(30, 58, 138, 0.05);
+}
+
+/* Row of yellow star icons */
+.stars {
+    display: flex;
+    gap: 0.25rem;
+    color: #fbbf24; /* yellow */
+    margin-bottom: 1.5rem;
+}
+
+/* The testimonial text */
+.story-quote {
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 2rem;
+    line-height: 1.625;
+}
+
+/* Row: author photo + name/role */
+.story-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.author-photo {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-name {
+    font-weight: 700;
+    color: var(--uiu-blue);
+}
+
+.author-role {
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+
+/* ----------------------------------------------------------------
+   9. FOOTER
+   ---------------------------------------------------------------- */
+.site-footer {
+    background-color: var(--white);
+    border-top: 1px solid var(--border-color);
+    padding: 5rem 0 2.5rem;
+}
+
+/* Three columns: brand, quick links, legal */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* stacked on mobile */
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+/* Logo + tagline column */
+.footer-brand {
+    /* no extra styles needed */
+}
+
+/* Logo row inside footer */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-tagline {
+    color: var(--text-light);
+    font-size: 0.875rem;
+    max-width: 24rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Row of social icon links */
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Each social icon: circle with an SVG inside */
+.social-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: var(--uiu-gray);
+    color: var(--uiu-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.social-icon:hover {
+    background-color: var(--uiu-blue);
+    color: var(--white);
+}
+
+/* "Quick Links" / "Legal" column headings */
+.footer-heading {
+    font-weight: 700;
+    color: var(--uiu-blue);
+    margin-bottom: 1.5rem;
+}
+
+/* The list of footer links */
+.footer-link-list {
+    list-style: none; /* removes default bullet points */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.footer-link-list a:hover {
+    color: var(--uiu-blue);
+}
+
+/* "Developed for UIU Project" note */
+.footer-project-note {
+    color: var(--uiu-blue);
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+/* Bottom bar with copyright text */
+.footer-bottom {
+    border-top: 1px solid var(--border-color);
+    padding-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-align: center;
+}
+
+
+/* ================================================================
+   10. RESPONSIVE / MEDIA QUERIES
+   These rules override the defaults above at different screen sizes.
+   "min-width" means: apply ONLY when screen is THIS wide or wider.
+   ================================================================ */
+
+/* --- 640px and wider (small tablets, large phones in landscape) --- */
+@media (min-width: 640px) {
+    /* CTA buttons sit side by side instead of stacked */
+    .hero-buttons {
+        flex-direction: row;
+    }
+
+    /* Buttons shrink to fit their content instead of full width */
+    .btn-primary,
+    .btn-outline {
+        width: auto;
+    }
+}
+
+/* --- 768px and wider (tablets, small laptops) --- */
+@media (min-width: 768px) {
+    /* Show desktop navigation links */
+    .desktop-nav {
+        display: flex;
+    }
+
+    /* Show auth buttons */
+    .header-auth {
+        display: flex;
+    }
+
+    /* Hide the hamburger button */
+    .mobile-toggle {
+        display: none;
+    }
+
+    /* Bigger headline on larger screens */
+    .hero-title {
+        font-size: 4.5rem;
+    }
+
+    /* Three mockup cards side by side */
+    .mockup-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* The middle card pushed down to create a staggered look */
+    .mockup-offset {
+        transform: translateY(3rem);
+    }
+
+    .mockup-offset:hover {
+        transform: translateY(2.5rem); /* still lifted slightly on hover */
+    }
+
+    /* Three steps side by side */
+    .steps-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* "View All Stories" link sits next to the title instead of below */
+    .stories-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .view-all-link {
+        margin-top: 0;
+    }
+
+    /* Two story cards per row */
+    .stories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Footer: brand column is wider, other two split the rest */
+    .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+
+    /* Footer bottom: two items on the same row */
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+/* --- 1024px and wider (desktops and laptops) --- */
+@media (min-width: 1024px) {
+    .section-title {
+        font-size: 2.25rem;
+    }
+
+    .sec-title {
+        font-size: 3rem;
+    }
+
+    /* Security section: text on left, visual on right */
+    .security-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Show the decorative card visual */
+    .security-visual {
+        display: block;
+    }
+
+    /* All three story cards in a row */
+    .stories-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* --- 767px and NARROWER (mobile phones) --- */
+@media (max-width: 767px) {
+    /* Hide desktop nav and auth on mobile */
+    .desktop-nav,
+    .header-auth {
+        display: none;
+    }
+
+    /* Show the hamburger button on mobile */
+    .mobile-toggle {
+        display: block;
+    }
+}

@@ -1,0 +1,46 @@
+/* ============================================================
+   start_campaign.css  –  UIU Friends Network
+   ============================================================ */
+
+/* Add specific styling/animation tweaks to complement the Tailwind CSS styles */
+
+/* Webkit Scrollbar styling for a cleaner look */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Trust Stars Colors */
+.text-success {
+    color: #10B981 !important;
+}
+
+/* Verified Stars color highlight */
+.bg-success\/10 span {
+    color: #fbbf24 !important; /* Gold stars */
+}
+.bg-success\/10 span:first-child {
+    color: #10B981 !important; /* Green verified badge */
+}
+
+/* Story textarea styling overrides */
+#story-text {
+    resize: none;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+#story-text:focus {
+    box-shadow: none;
+    outline: none;
+}

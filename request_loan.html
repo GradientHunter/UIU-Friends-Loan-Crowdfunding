@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request a Loan - UIU Friends Loan Network</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="request_loan.css" />
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon-box">
+        <span class="material-symbols-outlined">handshake</span>
+      </div>
+      <div>
+        <h1 class="logo-title">UIU Friends</h1>
+        <p class="logo-sub">Loan &amp; Crowdfunding</p>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="nav-link" href="dashboard.html">
+        <span class="material-symbols-outlined">dashboard</span>
+        <span>Dashboard</span>
+      </a>
+      <a class="nav-link active" href="marketplace.html">
+        <span class="material-symbols-outlined">storefront</span>
+        <span>Loan Marketplace</span>
+      </a>
+      <a class="nav-link" href="crowdfunding.html">
+        <span class="material-symbols-outlined">payments</span>
+        <span>Crowdfunding</span>
+      </a>
+      <a class="nav-link" href="myloans.html">
+        <span class="material-symbols-outlined">receipt_long</span>
+        <span>My Loans</span>
+      </a>
+      <a class="nav-link" href="profile.html">
+        <span class="material-symbols-outlined">settings</span>
+        <span>Settings</span>
+      </a>
+    </nav>
+
+    <!-- Trust Score -->
+    <div class="sidebar-trust">
+      <p class="trust-small-label">Personal Trust Score</p>
+      <div class="trust-row">
+        <span class="trust-stars-row">
+          <span class="star filled">★</span>
+          <span class="star filled">★</span>
+          <span class="star filled">★</span>
+          <span class="star filled">★</span>
+          <span class="star filled">★</span>
+        </span>
+        <span class="material-symbols-outlined trust-verified">verified</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== BLURRED BACKGROUND MAIN (behind modal) ===== -->
+  <main class="main-blur">
+    <!-- Top Header -->
+    <header class="top-bar">
+      <div class="search-wrap">
+        <span class="material-symbols-outlined s-icon">search</span>
+        <input type="text" placeholder="Search loans or friends..." />
+      </div>
+      <div class="top-bar-right">
+        <button class="notif-btn">
+          <span class="material-symbols-outlined">notifications</span>
+          <span class="notif-dot"></span>
+        </button>
+        <div class="user-area">
+          <div class="user-text">
+            <p class="user-name">Loading...</p>
+            <p class="user-score">
+              Trust: <span class="star filled">★★★★★</span>
+            </p>
+          </div>
+          <img class="user-avatar" src="https://ui-avatars.com/api/?name=UIU+User&background=1E3A8A&color=fff" alt="User Profile" />
+        </div>
+      </div>
+    </header>
+
+    <!-- Background page content (blurred) -->
+    <div class="bg-page-content">
+      <div class="bg-page-header">
+        <div>
+          <h2 class="bg-title">Loan Marketplace</h2>
+          <p class="bg-sub">Support a Friend today.</p>
+        </div>
+        <button class="request-btn-bg">
+          <span class="material-symbols-outlined">add</span>
+          Request a Loan
+        </button>
+      </div>
+      <div class="bg-skeleton">
+        <div class="skeleton-card"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== MODAL OVERLAY ===== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-box" id="modal-box">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title">Create a Loan Request</h2>
+          <p class="modal-subtitle">Provide clear details to get the best interest rates from the UIU community.</p>
+        </div>
+        <button class="modal-close" id="close-btn" onclick="closeModal()">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+
+        <!-- Row 1: Amount + Category -->
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">Loan Amount</label>
+            <div class="input-wrap">
+              <input type="number" id="loan-amount" class="form-input big-input" placeholder="e.g., 15,000" oninput="updateSummary()" />
+              <span class="input-suffix">BDT</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Purpose / Category</label>
+            <div class="select-wrap">
+              <select id="loan-purpose" class="form-select" onchange="updateSummary()">
+                <option>Tuition Fee</option>
+                <option>Medical Emergency</option>
+                <option>Laptop / Tech Repair</option>
+                <option>Other</option>
+              </select>
+              <span class="select-arrow material-symbols-outlined">expand_more</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Why do you need -->
+        <div class="form-group">
+          <label class="form-label">Why do you need this loan?</label>
+          <textarea id="loan-reason" class="form-textarea" rows="4" placeholder="Briefly explain your situation. Transparency helps build trust with lenders..."></textarea>
+        </div>
+
+        <!-- Row 3: Duration + Interest -->
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">Repayment Duration</label>
+            <div class="select-wrap">
+              <select id="loan-duration" class="form-select" onchange="updateSummary()">
+                <option>1 Month</option>
+                <option>2 Months</option>
+                <option selected>3 Months</option>
+                <option>6 Months</option>
+              </select>
+              <span class="select-arrow material-symbols-outlined">expand_more</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">
+              Max Acceptable Interest Rate (%)
+              <span class="material-symbols-outlined help-icon" title="Lenders will bid below this rate to offer you the best deal.">help_outline</span>
+            </label>
+            <input type="number" class="form-input" placeholder="e.g., 5" />
+          </div>
+        </div>
+
+        <!-- Summary Box -->
+        <div class="summary-box" id="summary-box">
+          <p class="summary-text">
+            Summary: You are requesting
+            <span class="summary-highlight" id="sum-amount">15,000 BDT</span>
+            for
+            <span class="summary-highlight" id="sum-purpose">Tuition Fee</span>
+            to be paid back in
+            <span class="summary-highlight" id="sum-duration">3 Months</span>.
+          </p>
+        </div>
+
+        <!-- Agreement Checkbox -->
+        <label class="agree-label">
+          <input type="checkbox" id="agree-check" class="agree-check" />
+          <span class="agree-text">
+            I agree to the platform's repayment terms and understand that late payments will negatively impact my
+            <strong>UIU Trust Score</strong>.
+          </span>
+        </label>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+        <button class="submit-btn" onclick="submitLoan()">
+          Post Loan Request to Marketplace
+        </button>
+      </div>
+
+    </div>
+  </div>
+  <!-- End Modal -->
+
+</div>
+
+<!-- JS -->
+<script src="request_loan.js"></script>
+</body>
+</html>

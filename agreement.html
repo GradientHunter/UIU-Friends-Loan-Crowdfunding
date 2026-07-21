@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agreement & Transfer Room - UIU Friends Network</title>
+    <link rel="stylesheet" href="agreementstyle.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <span class="material-symbols-outlined">handshake</span>
+            </div>
+            <div class="sidebar-title">
+                <h1>UIU Friends</h1>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-link">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="text">Dashboard</span>
+            </a>
+            <a href="marketplace.html" class="nav-link">
+                <span class="material-symbols-outlined">storefront</span>
+                <span class="text">Loan Marketplace</span>
+            </a>
+            <a href="crowdfunding.html" class="nav-link">
+                <span class="material-symbols-outlined">groups</span>
+                <span class="text">Crowdfunding Hub</span>
+            </a>
+            <a href="myloans.html" class="nav-link">
+                <span class="material-symbols-outlined">receipt_long</span>
+                <span class="text">My Loans</span>
+            </a>
+            <a href="agreement.html" class="nav-link active">
+                <span class="material-symbols-outlined">description</span>
+                <span class="text">My Agreements</span>
+            </a>
+            <a href="reviews_trust.html" class="nav-link">
+                <span class="material-symbols-outlined">verified_user</span>
+                <span class="text">Reviews & Trust</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="#" class="footer-link">
+                <span class="material-symbols-outlined">help</span>
+                <span class="text">Help & Support</span>
+            </a>
+            <a href="login.html" class="footer-link logout">
+                <span class="material-symbols-outlined">logout</span>
+                <span class="text">Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+            <div class="search-area">
+                <span class="material-symbols-outlined">search</span>
+                <input type="text" class="search-input" placeholder="Search agreements or friends...">
+            </div>
+            
+            <div class="user-area">
+                <button class="notification-btn">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="notification-dot"></span>
+                </button>
+                
+                <a href="profile.html" class="user-profile" style="text-decoration: none; display: flex; align-items: center; gap: 8px; color: inherit;">
+                    <div class="user-info">
+                        <p class="user-name">Loading...</p>
+                        <p class="user-trust">
+                            <span class="material-symbols-outlined" style="font-size: 14px;">verified</span>
+                            Trust Score: ★★★★★
+                        </p>
+                    </div>
+                    <div class="user-avatar">
+                        <img src="https://ui-avatars.com/api/?name=UIU+User&background=1E3A8A&color=fff" alt="Profile">
+                    </div>
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-container">
+            
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="page-title">
+                    <h2>Active Agreement: Semester Fee Loan</h2>
+                    <p>Ref ID: UIU-L-2023-8842</p>
+                </div>
+                <div class="status-badge" id="statusBadge">
+                    <span class="pulse-dot" id="pulseDot"></span>
+                    <span id="statusText">Status: Awaiting Transfer Confirmation</span>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="content-grid">
+                
+                <!-- Left Column -->
+                <div class="left-col">
+                    
+                    <!-- Contract Summary Card -->
+                    <div class="contract-card">
+                        <h3 class="card-title">
+                            <span class="material-symbols-outlined">article</span>
+                            Contract Summary
+                        </h3>
+                        
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                <p class="summary-label">Borrower</p>
+                                <div class="summary-user">
+                                    <p class="summary-name" id="ag-borrower-name">Loading...</p>
+                                    <span class="trust-tag">★★★★★</span>
+                                </div>
+                            </div>
+                            <div class="summary-item">
+                                <p class="summary-label">Lender</p>
+                                <div class="summary-user">
+                                    <p class="summary-name">Loading... (You)</p>
+                                    <span class="trust-tag">★★★★★</span>
+                                </div>
+                            </div>
+                            
+                            <div class="summary-item summary-divider">
+                                <p class="summary-label">Principal Amount</p>
+                                <p class="summary-amount">5,000 BDT</p>
+                            </div>
+                            <div class="summary-item summary-divider" style="grid-column: span 1;">
+                                <p class="summary-label">Interest Rate</p>
+                                <p class="summary-rate">4% <span>(200 BDT)</span></p>
+                            </div>
+                            
+                            <div class="summary-item summary-divider">
+                                <p class="summary-label">Repayment Deadline</p>
+                                <p class="summary-deadline">
+                                    <span class="material-symbols-outlined">calendar_today</span>
+                                    15 October, 2023
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transfer Instructions -->
+                    <div class="instructions-card">
+                        <div class="instructions-icon">
+                            <span class="material-symbols-outlined">payments</span>
+                        </div>
+                        <div class="instructions-content">
+                            <h4>Transfer Instructions</h4>
+                            <p>Please transfer the principal amount of <strong>5,000 BDT</strong> directly to Karim using the details below. Ensure you include 'Loan-8842' in the reference field.</p>
+                            
+                            <div class="accounts-grid">
+                                <div class="account-box">
+                                    <p class="account-label">bKash (Personal)</p>
+                                    <p class="account-number">017XXXXXX</p>
+                                </div>
+                                <div class="account-box">
+                                    <p class="account-label">Nagad (Personal)</p>
+                                    <p class="account-number">018XXXXXX</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Area -->
+                    <div class="action-area">
+                        <button class="confirm-transfer-btn" id="confirmBtn" onclick="confirmTransfer()">
+                            <span class="material-symbols-outlined">done_all</span>
+                            I have transferred 5,000 BDT via bKash
+                        </button>
+                        
+                        <div class="waiting-msg" id="waitingMsg">
+                            <span class="material-symbols-outlined animate-spin" id="spinnerIcon">progress_activity</span>
+                            <span id="waitingText">Waiting for Karim to confirm receipt of funds...</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column (Chat) -->
+                <div class="right-col">
+                    <div class="chat-container">
+                        
+                        <!-- Chat Header -->
+                        <div class="chat-header">
+                            <div class="chat-partner">
+                                <div class="chat-avatar-wrapper">
+                                    <div class="chat-avatar">
+                                        <img src="https://ui-avatars.com/api/?name=UIU+User&background=1E3A8A&color=fff" alt="Karim">
+                                    </div>
+                                    <span class="status-dot"></span>
+                                </div>
+                                <div>
+                                    <p class="chat-title">Secure Chat with Karim</p>
+                                    <p class="chat-subtitle">LOCKED & ENCRYPTED</p>
+                                </div>
+                            </div>
+                            <button class="chat-menu-btn">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Messages -->
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="chat-system-msg">
+                                <span class="system-tag">Agreement Formed</span>
+                            </div>
+                            <p class="chat-hint">Please communicate here regarding the transfer.</p>
+                            
+                            <!-- Karim's Message -->
+                            <div class="msg-row">
+                                <div class="msg-avatar">
+                                    <img src="https://ui-avatars.com/api/?name=UIU+User&background=1E3A8A&color=fff" alt="Karim">
+                                </div>
+                                <div class="msg-bubble">
+                                    
+                                    <p class="msg-time">10:42 AM</p>
+                                </div>
+                            </div>
+                            
+                            <!-- My Message -->
+                            <div class="msg-row mine">
+                                <div class="msg-bubble">
+                                    No problem brother! I am sending it to your bKash number right now.
+                                    <p class="msg-time">10:45 AM</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Chat Input -->
+                        <div class="chat-input-area">
+                            <button class="chat-add-btn">
+                                <span class="material-symbols-outlined">add_circle</span>
+                            </button>
+                            <div class="chat-input-wrapper">
+                                <input type="text" id="messageInput" class="chat-input" placeholder="Type a message...">
+                            </div>
+                            <button class="chat-send-btn" onclick="sendMessage()">
+                                <span class="material-symbols-outlined">send</span>
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <script src="agreementscript.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowdfunding Hub - UIU Friends Network</title>
+    <link rel="stylesheet" href="crowdfundingstyle.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <span class="material-symbols-outlined">group</span>
+            </div>
+            <div class="sidebar-title">
+                <h1>UIU Friends<br>Network</h1>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-link">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="text">Dashboard</span>
+            </a>
+            <a href="marketplace.html" class="nav-link">
+                <span class="material-symbols-outlined">account_balance_wallet</span>
+                <span class="text">Loan Marketplace</span>
+            </a>
+            <a href="crowdfunding.html" class="nav-link active">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">volunteer_activism</span>
+                <span class="text">Crowdfunding Hub</span>
+            </a>
+            <a href="myloans.html" class="nav-link">
+                <span class="material-symbols-outlined">description</span>
+                <span class="text">My Loans</span>
+            </a>
+            <a href="reviews_trust.html" class="nav-link">
+                <span class="material-symbols-outlined">verified_user</span>
+                <span class="text">Reviews & Trust Score</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="#" class="footer-link">
+                <span class="material-symbols-outlined">help</span>
+                <span class="text">Help & Support</span>
+            </a>
+            <a href="login.html" class="footer-link logout">
+                <span class="material-symbols-outlined">logout</span>
+                <span class="text">Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+            <div class="search-area">
+                <span class="material-symbols-outlined">search</span>
+                <input type="text" class="search-input" placeholder="Search loans, campaigns, or students...">
+            </div>
+            
+            <div class="user-area">
+                <button class="notification-btn">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="notification-dot"></span>
+                </button>
+                
+                <span id="cf-verification-badge" class="cf-badge unverified">⚠ Verify to Donate</span>
+
+                <a href="profile.html" class="user-profile" style="text-decoration: none; display: flex; align-items: center; gap: 8px; color: inherit;">
+                    <div class="user-info">
+                        <p class="user-name">Loading...</p>
+                        <p class="user-trust">Trust Score: ★★★★★</p>
+                    </div>
+                    <div class="user-avatar">
+                        <img src="https://ui-avatars.com/api/?name=UIU+User&background=1E3A8A&color=fff" alt="Profile">
+                    </div>
+                </a>
+            </div>
+        </header>
+
+        <div class="page-container">
+            
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-text">
+                    <h2>Crowdfunding Hub - Stand by your UIU family.</h2>
+                    <p>100% of your donations go directly to the verified students in need.</p>
+                </div>
+                <button class="start-campaign-btn" onclick="startCampaign()">
+                    <span class="material-symbols-outlined">add_circle</span>
+                    Start a Campaign
+                </button>
+            </div>
+            
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <button class="filter-pill active" onclick="selectFilter(this)">All Campaigns</button>
+                <button class="filter-pill" onclick="selectFilter(this)">Medical Emergencies</button>
+                <button class="filter-pill" onclick="selectFilter(this)">Tuition Help</button>
+                <button class="filter-pill" onclick="selectFilter(this)">Charity Events</button>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="content-grid">
+                
+                <!-- Left Column — populated dynamically by crowdfundingscript.js -->
+                <div class="main-col">
+                    <div class="campaign-card">
+                        <div class="campaign-image-container">
+                            <img src="" alt="Campaign" style="min-height:200px; background:#f1f5f9;">
+                            <div class="verified-badge">
+                                <span class="material-symbols-outlined" style="font-size:16px;">verified</span> Admin Verified
+                            </div>
+                        </div>
+                        
+                        <div class="campaign-details">
+                            <h1 class="campaign-title" style="color:#94a3b8;">Loading campaign...</h1>
+                            <p class="campaign-desc"></p>
+                            
+                            <!-- Documents Grid -->
+                            <h3 class="section-header">
+                                <span class="material-symbols-outlined">description</span> Details and Proof
+                            </h3>
+                            <div class="proof-grid"></div>
+                            
+                            <!-- Comments -->
+                            <h3 class="section-header">
+                                <span class="material-symbols-outlined">forum</span> Supportive Comments
+                            </h3>
+                            <div class="comments-list">
+                                <p style="font-size:13px; color:#94a3b8; padding:12px 0;">Loading comments...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column (Sticky Donation Box) — stats updated by crowdfundingscript.js -->
+                <div class="sticky-col">
+                    <div class="sticky-container">
+                        <div class="donation-card">
+                            
+                            <div class="donation-stats">
+                                <div class="donation-amounts">
+                                    <span class="amount-raised">0 BDT</span>
+                                    <span class="amount-goal">raised of 0 BDT</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <p class="donor-count">0 people donated</p>
+                            </div>
+                            
+                            <div class="donation-form">
+                                <p class="form-label">Select Donation Amount</p>
+                                <div class="preset-amounts">
+                                    <button class="preset-btn" id="btn-500" onclick="selectAmount(500)">500 BDT</button>
+                                    <button class="preset-btn active" id="btn-1000" onclick="selectAmount(1000)">1,000 BDT</button>
+                                </div>
+                                
+                                <input type="number" class="custom-input" id="customInput" placeholder="Custom Amount (BDT)" oninput="customInputChanged()">
+                                
+                                <div class="anonymous-toggle">
+                                    <div class="toggle-info">
+                                        <span class="toggle-title">Donate Anonymously</span>
+                                        <span class="toggle-desc">Hide your name from public feed</span>
+                                    </div>
+                                    <input type="checkbox" id="anonymousCheck" class="simple-checkbox">
+                                </div>
+                                
+                                <button class="donate-submit-btn" onclick="submitDonation()">Donate Now</button>
+                            </div>
+                            
+                            <!-- Recent Donations — populated by crowdfundingscript.js after donation -->
+                            <div class="recent-donations" id="cf-recent-donations-box" style="display:none;">
+                                <h4 class="recent-title">
+                                    <span class="material-symbols-outlined">history</span> Recent Donations
+                                </h4>
+                                <div class="recent-list" id="cf-recent-list"></div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Other Campaigns Grid — populated dynamically by crowdfundingscript.js -->
+            <h3 class="other-campaigns-title">Other Active Campaigns</h3>
+            <div class="feed-grid">
+                <p style="grid-column:1/-1; text-align:center; color:#94a3b8; font-size:13px; padding:20px;">Loading campaigns...</p>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="crowdfundingscript.js"></script>
+
+    <!-- ===== UIU VERIFICATION MODAL ===== -->
+    <div id="cf-verification-modal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(15,23,42,0.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:16px;">
+        <div style="background:#fff;width:100%;max-width:460px;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,0.22);overflow:hidden;font-family:'Public Sans',sans-serif;animation:cfSlide 0.25s ease;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:24px 28px 18px;border-bottom:1px solid #f1f5f9;">
+                <div>
+                    <h2 style="font-size:18px;font-weight:800;color:#1e293b;margin:0;">🎓 UIU Student Verification</h2>
+                    <p style="font-size:12px;color:#64748b;margin:4px 0 0;">Only verified UIU students can donate or start campaigns.</p>
+                </div>
+                <button onclick="closeCfVerificationModal()" style="background:none;border:none;cursor:pointer;color:#94a3b8;display:flex;padding:4px;">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div style="padding:20px 28px 24px;display:flex;flex-direction:column;gap:16px;">
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                    <label style="font-size:12px;font-weight:700;color:#334155;">UIU Student ID</label>
+                    <input type="text" id="cf-student-id" placeholder="e.g. 011XXXXXXX" style="padding:11px 16px;background:#f8fafc;border:2px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none;color:#1e293b;">
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                    <label style="font-size:12px;font-weight:700;color:#334155;">UIU Institutional Email</label>
+                    <input type="email" id="cf-student-email" placeholder="e.g. student@bscse.uiu.ac.bd" style="padding:11px 16px;background:#f8fafc;border:2px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none;color:#1e293b;">
+                </div>
+                <div style="display:flex;gap:10px;align-items:flex-start;background:#eff6ff;border-radius:10px;padding:12px 14px;font-size:12px;color:#1e40af;">
+                    <span class="material-symbols-outlined" style="font-size:18px;flex-shrink:0;">info</span>
+                    <p style="margin:0;">Email must end with <strong>uiu.ac.bd</strong>. Only UIU students can participate in crowdfunding activities.</p>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:flex-end;gap:16px;padding:16px 28px;background:#f8fafc;border-top:1px solid #e2e8f0;">
+                <button onclick="closeCfVerificationModal()" style="background:none;border:none;font-size:13px;font-weight:700;color:#64748b;cursor:pointer;">Cancel</button>
+                <button onclick="submitCfVerification()" style="display:flex;align-items:center;gap:6px;background:#1E3A8A;color:#fff;border:none;border-radius:10px;padding:11px 22px;font-size:13px;font-weight:700;cursor:pointer;">
+                    <span class="material-symbols-outlined" style="font-size:18px;">verified</span> Verify My Identity
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+    @keyframes cfSlide {
+        from { opacity:0; transform: translateY(22px); }
+        to   { opacity:1; transform: translateY(0); }
+    }
+    .cf-badge {
+        display: inline-flex; align-items: center; gap: 5px;
+        padding: 5px 12px; border-radius: 20px;
+        font-size: 12px; font-weight: 700; cursor: pointer;
+    }
+    .cf-badge.verified   { background: #d1fae5; color: #065f46; }
+    .cf-badge.unverified { background: #fef3c7; color: #92400e; }
+    .cf-badge.unverified:hover { background: #fde68a; }
+    </style>
+
+</body>
+</html>

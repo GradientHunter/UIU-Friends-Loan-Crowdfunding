@@ -1,0 +1,440 @@
+/* ================================================================
+   STYLESHEET: UIU Friends Network — Login Page
+   ================================================================
+   HOW THIS FILE IS ORGANIZED:
+   1.  CSS Variables  (colours, shared values)
+   2.  Reset / Base styles
+   3.  Page background  (the full-screen grey area)
+   4.  Login card  (the white box in the centre)
+   5.  Logo icon circle
+   6.  Heading and subtitle text
+   7.  Form fields  (labels, inputs, icons)
+   8.  Options row  (Remember me + Forgot password)
+   9.  Sign In button
+   10. OR divider
+   11. Create account link
+   12. Focus and hover effects
+   ================================================================ */
+
+
+/* ----------------------------------------------------------------
+   1. CSS VARIABLES
+   Colours and shared values in one place.
+   Change a value here and it updates everywhere.
+   ---------------------------------------------------------------- */
+:root {
+    --uiu-blue:        #1E3A8A;   /* main dark blue */
+    --uiu-blue-hover:  #1e40af;   /* slightly lighter for button hover */
+    --uiu-green:       #10B981;   /* accent green (not used much here) */
+
+    --page-bg:         #EEF0F5;   /* very light blue-grey page background */
+    --card-bg:         #ffffff;   /* white card background */
+
+    --text-dark:       #0f172a;   /* almost black — main headings */
+    --text-muted:      #64748b;   /* grey — subtitles and placeholder text */
+    --text-light:      #94a3b8;   /* lighter grey — small labels */
+
+    --input-border:    #e2e8f0;   /* light border around input fields */
+    --input-focus:     #1E3A8A;   /* blue border when a field is active */
+    --input-bg:        #ffffff;   /* white input background */
+    --icon-color:      #94a3b8;   /* grey colour for the icons inside inputs */
+
+    --border-radius-card:  1.5rem;   /* how rounded the card corners are */
+    --border-radius-input: 0.75rem;  /* how rounded the input corners are */
+    --border-radius-btn:   0.75rem;  /* how rounded the button corners are */
+
+    --transition: all 0.2s ease; /* standard hover/focus animation speed */
+}
+
+
+/* ----------------------------------------------------------------
+   2. RESET / BASE STYLES
+   Remove default browser margins and padding.
+   ---------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* width includes padding, not added on top */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+/* Remove underlines from links by default */
+a {
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+/* Reset default button styles */
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+}
+
+/* Inputs use the same font as the rest of the page */
+input {
+    font-family: inherit;
+}
+
+
+/* ----------------------------------------------------------------
+   3. PAGE BACKGROUND
+   Fills the entire screen with a soft grey-blue colour.
+   Uses flexbox to centre the login card both horizontally
+   and vertically, even on tall screens.
+   ---------------------------------------------------------------- */
+.page-background {
+    /* Fill the full browser window */
+    min-height: 100vh;
+    width: 100%;
+
+    background-color: var(--page-bg);
+
+    /* Flexbox centres the card inside this container */
+    display: flex;
+    align-items: center;     /* vertically centred */
+    justify-content: center; /* horizontally centred */
+
+    /* Padding so the card doesn't touch the edges on very small screens */
+    padding: 2rem 1rem;
+}
+
+
+/* ----------------------------------------------------------------
+   4. LOGIN CARD
+   The white rounded rectangle that holds all the form content.
+   ---------------------------------------------------------------- */
+.login-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-card);
+
+    /* Generous padding inside the card */
+    padding: 3rem 2.5rem;
+
+    /* Maximum width so it doesn't stretch too wide on large screens */
+    width: 100%;
+    max-width: 440px;
+
+    /* Soft shadow to lift the card off the background */
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.05),
+        0 20px 60px -10px rgba(30, 58, 138, 0.1);
+
+    /* Everything inside the card is centred horizontally */
+    text-align: center;
+}
+
+
+/* ----------------------------------------------------------------
+   5. LOGO CIRCLE
+   The small blue-tinted circle with the network icon inside it.
+   ---------------------------------------------------------------- */
+.logo-circle {
+    /* Make it a circle */
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+
+    /* Light blue background tint */
+    background-color: #dbeafe;
+
+    /* Centre the SVG icon inside */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Centre the circle itself on the page (auto left/right margin) */
+    margin: 0 auto 1.75rem;
+}
+
+
+/* ----------------------------------------------------------------
+   6. HEADING AND SUBTITLE TEXT
+   ---------------------------------------------------------------- */
+
+/* "Welcome back." — bold large heading */
+.card-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 0.625rem;
+    letter-spacing: -0.02em; /* tight letter spacing looks modern */
+}
+
+/* "Sign in to manage your loans..." — smaller grey description */
+.card-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 28rem;
+    margin: 0 auto 2rem; /* centred with space below */
+}
+
+
+/* ----------------------------------------------------------------
+   7. FORM FIELDS
+   Each field has: a label, a wrapper div, an icon, and an input.
+   The wrapper uses flexbox to line them up side by side.
+   ---------------------------------------------------------------- */
+
+/* The whole form: left-aligned text, fields stacked vertically */
+.login-form {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem; /* space between each field group */
+}
+
+/* Wraps one label + its input together */
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* small space between label and input */
+}
+
+/* Label text above each input */
+.field-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* The container that holds the icon + input + optional eye button */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative; /* lets us position the icon absolutely inside */
+
+    background-color: var(--input-bg);
+    border: 1.5px solid var(--input-border);
+    border-radius: var(--border-radius-input);
+
+    /* Smooth border colour change on focus */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* When anything inside the wrapper is focused, highlight the border */
+.input-wrapper:focus-within {
+    border-color: var(--input-focus);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1); /* soft blue glow */
+}
+
+/* The SVG icon on the left side of the input */
+.input-icon {
+    /* Push the icon slightly in from the left edge */
+    padding-left: 1rem;
+    color: var(--icon-color);
+
+    /* Don't let the icon shrink if the input gets narrow */
+    flex-shrink: 0;
+
+    /* Centre the icon vertically */
+    display: flex;
+    align-items: center;
+}
+
+/* The actual <input> text field */
+.text-input {
+    /* Fill all remaining space in the wrapper */
+    flex: 1;
+    padding: 0.875rem 1rem;
+
+    /* No visible border — the wrapper handles the border */
+    border: none;
+    outline: none;
+    background: transparent;
+
+    font-size: 0.9375rem;
+    color: var(--text-dark);
+}
+
+/* Placeholder text colour */
+.text-input::placeholder {
+    color: var(--text-light);
+}
+
+/* The eye button that shows/hides the password */
+.toggle-password {
+    /* Position on the right side */
+    padding-right: 1rem;
+    padding-left: 0.5rem;
+
+    color: var(--icon-color);
+    display: flex;
+    align-items: center;
+
+    /* Smooth colour change on hover */
+    transition: color 0.2s ease;
+}
+
+.toggle-password:hover {
+    color: var(--uiu-blue);
+}
+
+
+/* ----------------------------------------------------------------
+   8. OPTIONS ROW  (Remember me checkbox + Forgot password link)
+   Flexbox puts checkbox on the left and the link on the right.
+   ---------------------------------------------------------------- */
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Slight negative top margin to tighten spacing after the field */
+    margin-top: -0.25rem;
+}
+
+/* Wraps the checkbox + "Remember me" text so they sit side by side */
+.remember-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer; /* shows a hand cursor when hovering */
+}
+
+/* Style the native checkbox */
+.remember-checkbox {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--uiu-blue); /* blue tick when checked */
+    cursor: pointer;
+}
+
+.remember-text {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+/* "Forgot password?" link on the right */
+.forgot-link {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--uiu-blue);
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+
+/* ----------------------------------------------------------------
+   9. SIGN IN BUTTON
+   Full-width solid blue button with an arrow icon.
+   ---------------------------------------------------------------- */
+.btn-signin {
+    /* Fill the whole form width */
+    width: 100%;
+
+    background-color: var(--uiu-blue);
+    color: #ffffff;
+
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius-btn);
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    /* Flexbox centres the text and arrow side by side */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+
+    /* Soft blue shadow below the button */
+    box-shadow: 0 8px 20px -4px rgba(30, 58, 138, 0.35);
+
+    /* Smooth colour and transform changes on hover */
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+
+    /* Add a top margin to separate from the options row */
+    margin-top: 0.25rem;
+}
+
+.btn-signin:hover {
+    background-color: var(--uiu-blue-hover);
+    transform: translateY(-1px); /* lifts the button slightly */
+    box-shadow: 0 12px 24px -4px rgba(30, 58, 138, 0.4);
+}
+
+/* Button sinks down slightly when clicked */
+.btn-signin:active {
+    transform: translateY(0);
+}
+
+
+/* ----------------------------------------------------------------
+   10. OR DIVIDER
+   A horizontal line with "OR" text centred in the middle.
+   ---------------------------------------------------------------- */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.75rem 0;
+}
+
+/* The two horizontal lines on each side of "OR" */
+.divider-line {
+    flex: 1; /* each line grows equally to fill available space */
+    height: 1px;
+    background-color: #e2e8f0;
+}
+
+/* The "OR" word in the middle */
+.divider-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-light);
+    letter-spacing: 0.1em; /* spaced-out letters looks cleaner */
+}
+
+
+/* ----------------------------------------------------------------
+   11. CREATE ACCOUNT LINK
+   The "New to the network? Create an account" line at the bottom.
+   ---------------------------------------------------------------- */
+.create-account {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: -0.5rem; /* tighten the gap above */
+}
+
+/* The clickable "Create an account" link part */
+.create-link {
+    font-weight: 700;
+    color: var(--uiu-blue);
+    margin-left: 0.25rem;
+}
+
+.create-link:hover {
+    text-decoration: underline;
+}
+
+
+/* ----------------------------------------------------------------
+   12. FOCUS ACCESSIBILITY
+   When a user navigates with a keyboard (Tab key), show a clear
+   blue outline so they always know which element is selected.
+   ---------------------------------------------------------------- */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--uiu-blue);
+    outline-offset: 2px;
+}
+
+/* The input wrapper handles the focus style for inputs — so
+   remove the default outline from individual <input> elements */
+.text-input:focus {
+    outline: none;
+}

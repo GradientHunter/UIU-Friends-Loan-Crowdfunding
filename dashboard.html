@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UIU Friends - Loan & Crowdfunding</title>
+  <link rel="stylesheet" href="dashboardstyle.css" />
+  <!-- Google Fonts & Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">
+        <div class="logo-icon">UF</div>
+        <div>
+          <div class="logo-name">UIU Friends</div>
+          <div class="logo-sub">Loan & Crowdfunding</div>
+        </div>
+      </div>
+
+      <div class="nav-section">LOAN SYSTEM</div>
+      <a href="dashboard.html" class="nav-link active">
+        <span class="material-symbols-outlined">dashboard</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="marketplace.html" class="nav-link">
+        <span class="material-symbols-outlined">storefront</span>
+        <span>Loan Marketplace</span>
+      </a>
+
+      <div class="nav-section">DONATION SYSTEM</div>
+      <a href="crowdfunding.html" class="nav-link">
+        <span class="material-symbols-outlined">volunteer_activism</span>
+        <span>Crowdfunding Hub</span>
+      </a>
+
+      <div class="nav-section">USER ACCOUNT</div>
+      <a href="myloans.html" class="nav-link">
+        <span class="material-symbols-outlined">account_balance_wallet</span>
+        <span>My Loans</span>
+      </a>
+      <a href="reviews_trust.html" class="nav-link">
+        <span class="material-symbols-outlined">verified_user</span>
+        <span>Reviews & Trust Score</span>
+      </a>
+
+      <div class="sidebar-footer">
+        <a href="#" class="nav-link">
+          <span class="material-symbols-outlined">help</span>
+          <span>Help & Support</span>
+        </a>
+        <a href="login.html" class="nav-link logout">
+          <span class="material-symbols-outlined">logout</span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Area -->
+    <div class="main-area">
+
+      <!-- Header -->
+      <div class="header">
+        <input type="text" class="search-box" placeholder="Search loans, campaigns, or students..." />
+        <div class="header-right">
+          <div class="notif-btn">&#128276;</div>
+          <div class="user-info">
+            <div class="user-profile-details" style="text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
+              <a href="profile.html" class="user-name" style="text-decoration: none; color: inherit;">Loading...</a>
+              <div class="trust-score" id="user-verification-badge" style="cursor: pointer; display: flex; align-items: center; gap: 4px; padding: 2px 8px; margin-top: 2px;" onclick="triggerVerification()">
+                <span class="material-symbols-outlined" style="font-size: 14px;">verified_user</span>
+                <span id="verification-text">Loading...</span>
+              </div>
+            </div>
+            <a href="profile.html" class="avatar" style="overflow: hidden; width: 38px; height: 38px; border-radius: 50%; display: block; border: 2px solid #e0e0e0; transition: border-color 0.2s;">
+              <img src="https://ui-avatars.com/api/?name=UIU+User&background=1E3A8A&color=fff" alt="User" style="width: 100%; height: 100%; object-fit: cover;" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page Content -->
+      <div class="content">
+
+        <!-- Hero Banner -->
+        <div class="hero">
+          <div class="hero-text">
+            <h2>Welcome to UIU Friends!</h2>
+            <p>Here is what's happening in the UIU community today. Please log in to see your notifications.</p>
+          </div>
+          <div class="hero-buttons">
+            <button class="btn btn-white">Request a Loan</button>
+            <button class="btn btn-green">Start a Campaign</button>
+          </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-row">
+          
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-label">Active Loan Requests</div>
+              <div class="stat-icon-wrapper blue-bg">
+                <span class="material-symbols-outlined">payments</span>
+              </div>
+            </div>
+            <div class="stat-number">24</div>
+            <div class="stat-note green-text">
+              <span class="material-symbols-outlined">trending_up</span>
+              <span>+12% vs last week</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-label">Crowdfunding Campaigns</div>
+              <div class="stat-icon-wrapper green-bg">
+                <span class="material-symbols-outlined">campaign</span>
+              </div>
+            </div>
+            <div class="stat-number">12</div>
+            <div class="stat-note green-text">
+              <span class="material-symbols-outlined">trending_up</span>
+              <span>+4 today</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-label">Your Active Bids</div>
+              <div class="stat-icon-wrapper purple-bg">
+                <span class="material-symbols-outlined">local_offer</span>
+              </div>
+            </div>
+            <div class="stat-number">--</div>
+            <div class="stat-note gray-text">
+              <span class="material-symbols-outlined">lock</span>
+              <span>Login to view</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-label">Total Donations</div>
+              <div class="stat-icon-wrapper orange-bg">
+                <span class="material-symbols-outlined">volunteer_activism</span>
+              </div>
+            </div>
+            <div class="stat-number">-- <small>BDT</small></div>
+            <div class="stat-note gray-text">
+              <span class="material-symbols-outlined">lock</span>
+              <span>Login to view</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Two Columns (dynamically rendered by dashboardscript.js) -->
+        <div class="two-col">
+
+          <!-- Urgent Loans Panel — populated by renderUrgentLoans() -->
+          <div>
+            <div class="panel-header">
+              <h3>Urgent Loan Requests</h3>
+              <a href="marketplace.html">View All</a>
+            </div>
+            <p style="color:#94a3b8; font-size:13px; text-align:center; padding:20px;">Loading...</p>
+          </div>
+
+          <!-- Campaigns Panel — populated by renderTrendingCampaigns() -->
+          <div>
+            <div class="panel-header">
+              <h3>Trending Donation Campaigns</h3>
+              <a href="crowdfunding.html">Explore More</a>
+            </div>
+            <p style="color:#94a3b8; font-size:13px; text-align:center; padding:20px;">Loading...</p>
+          </div>
+
+        </div>
+
+  <div class="verification-modal-overlay" id="verification-modal-overlay">
+      <div class="verification-modal-box">
+          <div class="verification-modal-header">
+              <div>
+                  <h3 class="verification-modal-title">UIU Student Verification</h3>
+                  <p class="verification-modal-subtitle">Verify your identity to access loan bidding and crowdfunding.</p>
+              </div>
+              <button class="verification-modal-close" onclick="closeVerificationModal()">
+                  <span class="material-symbols-outlined">close</span>
+              </button>
+          </div>
+          <div class="verification-modal-body">
+              <div class="verification-form-group">
+                  <label class="verification-label">UIU Student ID</label>
+                  <input type="text" id="v-student-id" class="verification-input" placeholder="e.g., 011 191 000" />
+              </div>
+              <div class="verification-form-group">
+                  <label class="verification-label">Institutional Email</label>
+                  <input type="email" id="v-student-email" class="verification-input" placeholder="e.g., rhasan191000@bscse.uiu.ac.bd" />
+              </div>
+              <div class="verification-form-group">
+                  <label class="verification-label">Upload Student ID Card / Proof (Simulation)</label>
+                  <input type="file" id="v-student-file" class="verification-input" />
+              </div>
+          </div>
+          <div class="verification-modal-footer">
+              <button class="verification-btn-cancel" onclick="closeVerificationModal()">Cancel</button>
+              <button class="verification-btn-submit" onclick="submitVerificationForm()">Verify Now</button>
+          </div>
+      </div>
+  </div>
+
+  <script src="dashboardscript.js"></script>
+</body>
+</html>

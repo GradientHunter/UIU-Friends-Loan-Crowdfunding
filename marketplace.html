@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UIU Friends - Loan Marketplace</title>
+    <link rel="stylesheet" href="marketplacestyle.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <span class="material-symbols-outlined">handshake</span>
+            </div>
+            <div class="sidebar-title">
+                <h1>UIU Friends</h1>
+                <p>Loan & Crowdfunding</p>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-link">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="text">Dashboard</span>
+            </a>
+            <a href="marketplace.html" class="nav-link active">
+                <span class="material-symbols-outlined">storefront</span>
+                <span class="text">Loan Marketplace</span>
+            </a>
+            <a href="crowdfunding.html" class="nav-link">
+                <span class="material-symbols-outlined">payments</span>
+                <span class="text">Crowdfunding</span>
+            </a>
+            <a href="myloans.html" class="nav-link">
+                <span class="material-symbols-outlined">receipt_long</span>
+                <span class="text">My Loans</span>
+            </a>
+            <a href="profile.html" class="nav-link">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="text">Settings</span>
+            </a>
+        </nav>
+        
+        <div class="trust-score-box">
+            <p class="trust-score-title">Personal Trust Score</p>
+            <div class="trust-score-value">
+                <span class="score">★★★★★</span>
+                <span class="material-symbols-outlined">verified</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+            <div class="search-area">
+                <span class="material-symbols-outlined">search</span>
+                <input type="text" class="search-input search-box" id="mp-search-input" placeholder="Search loans or friends...">
+            </div>
+            
+            <div class="user-area">
+                <button class="notification-btn">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="notification-dot"></span>
+                </button>
+                
+                <span id="mp-verification-badge" class="mp-badge unverified">⚠ Unverified</span>
+
+                <a href="profile.html" class="user-profile" style="text-decoration: none; display: flex; align-items: center; gap: 8px; color: inherit;">
+                    <div class="user-info">
+                        <p class="user-name" id="mp-user-name">Loading...</p>
+                        <p class="user-trust" id="mp-user-trust">Trust Score: —</p>
+                    </div>
+                    <div class="user-avatar" id="mp-user-avatar" style="width:36px;height:36px;border-radius:50%;overflow:hidden;background:#e2e8f0;display:flex;align-items:center;justify-content:center;">
+                        <img id="mp-user-avatar-img" src="" alt="Profile" style="width:100%;height:100%;object-fit:cover;display:none;">
+                        <span id="mp-user-avatar-initials" style="font-size:13px;font-weight:700;color:#475569;"></span>
+                    </div>
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-container">
+            
+            <!-- Header -->
+            <div class="page-header">
+                <div class="page-title">
+                    <h2>Loan Marketplace</h2>
+                    <p>Support a Friend today.</p>
+                </div>
+                <button class="request-btn" onclick="requestLoan()">
+                    <span class="material-symbols-outlined" style="font-size:18px;">add</span>
+                    Request a Loan
+                </button>
+            </div>
+            
+            <!-- Filter Bar -->
+            <div class="filter-section">
+                <div class="filter-row">
+                    <span class="filter-label">Sort by:</span>
+                    <button class="sort-btn active" onclick="setSort(this,'urgent')">Most Urgent</button>
+                    <button class="sort-btn" onclick="setSort(this,'interest')">Lowest Interest</button>
+                    <button class="sort-btn" onclick="setSort(this,'trust')">Highest Trust Score</button>
+                </div>
+                <div class="filter-row">
+                    <span class="filter-label">Categories:</span>
+                    <div class="category-tags">
+                        <span class="category-tag active" onclick="setCategory(this,'')">All</span>
+                        <span class="category-tag" onclick="setCategory(this,'Tuition Fee')">Tuition</span>
+                        <span class="category-tag" onclick="setCategory(this,'Medical Emergency')">Medical</span>
+                        <span class="category-tag" onclick="setCategory(this,'Emergency')">Emergency</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loan Cards Grid -->
+            <div class="cards-grid" id="loan-cards-container">
+                <!-- Dynamically Rendered Loan Request Cards -->
+            </div>
+
+            </div>
+    </main>
+
+    <script src="marketplacescript.js"></script>
+
+    <!-- ===== UIU VERIFICATION MODAL ===== -->
+    <div class="mp-modal-overlay" id="mp-verification-modal" onclick="handleMpVerificationOverlayClick(event)">
+        <div class="mp-modal-box">
+            <div class="mp-modal-header">
+                <div>
+                    <h2 class="mp-modal-title">🎓 UIU Student Verification Required</h2>
+                    <p class="mp-modal-subtitle">Only verified UIU students can bid or request loans on this platform.</p>
+                </div>
+                <button class="mp-modal-close" onclick="closeMpVerificationModal()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="mp-modal-body">
+                <div class="mp-form-group">
+                    <label class="mp-label">UIU Student ID</label>
+                    <input type="text" id="mp-student-id" class="mp-input" placeholder="e.g. 011XXXXXXX" />
+                </div>
+                <div class="mp-form-group">
+                    <label class="mp-label">UIU Institutional Email</label>
+                    <input type="email" id="mp-student-email" class="mp-input" placeholder="e.g. student@bscse.uiu.ac.bd" />
+                </div>
+                <div class="mp-verify-info">
+                    <span class="material-symbols-outlined">info</span>
+                    <p>Your email must end with <strong>uiu.ac.bd</strong> to be accepted. Only UIU students are allowed to participate.</p>
+                </div>
+            </div>
+            <div class="mp-modal-footer">
+                <button class="mp-cancel-btn" onclick="closeMpVerificationModal()">Cancel</button>
+                <button class="mp-submit-btn" onclick="submitMpVerification()">
+                    <span class="material-symbols-outlined">verified</span> Verify My Identity
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== LOAN DETAILS & PRIVATE BIDDING MODAL ===== -->
+    <div class="mp-modal-overlay" id="loan-details-modal" onclick="handleDetailsOverlayClick(event)">
+        <div class="mp-modal-box" style="max-width: 550px;">
+            <div class="mp-modal-header">
+                <div>
+                    <h2 class="mp-modal-title" id="det-purpose">Loan Details</h2>
+                    <p class="mp-modal-subtitle" id="det-modal-ref">Ref ID: UIU-L-2023-X</p>
+                </div>
+                <button class="mp-modal-close" onclick="closeLoanDetailsModal()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="mp-modal-body">
+                <!-- Borrower Profile -->
+                <div class="det-borrower-profile">
+                    <img id="det-borrower-avatar" src="" style="width:48px; height:48px; border-radius:50%; object-fit:cover;" alt="Borrower">
+                    <div>
+                        <h4 id="det-borrower-name" style="font-size:15px; font-weight:700; color:#1e293b; margin:0;">Borrower Name</h4>
+                        <p id="det-borrower-dept" style="font-size:12px; color:#64748b; margin:2px 0 0;">Department</p>
+                        <div style="display:flex; align-items:center; gap:6px; margin-top:4px;">
+                            <span id="det-trust" style="color:#eab308; font-size:13px; letter-spacing:0.5px;">★★★★★</span>
+                            <span class="mp-badge verified" style="font-size:9px; padding:1px 6px;">✔ Verified CSE Student</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loan Details -->
+                <div class="det-loan-info">
+                    <div class="det-info-item">
+                        <p class="det-info-label">Requested Amount</p>
+                        <p id="det-amount" class="det-info-val">0 BDT</p>
+                    </div>
+                    <div class="det-info-item">
+                        <p class="det-info-label">Repayment Duration</p>
+                        <p id="det-duration" class="det-info-val">3 Months</p>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="mp-form-group">
+                    <label class="mp-label">Loan Purpose & Reason</label>
+                    <p id="det-reason" class="det-reason-box">Reason details...</p>
+                </div>
+
+                <!-- Private Bid Form -->
+                <div class="det-bid-form-box">
+                    <h4 style="font-size:14px; font-weight:800; color:#1e293b; margin:0;">🔒 Offer a Loan (Private Bid)</h4>
+                    <p style="font-size:12px; color:#64748b; margin:0;">Submit your interest rate and repayment duration offer privately. The borrower will compare all offers privately in their "My Loans" dashboard.</p>
+                    
+                    <div class="det-loan-info" style="margin-top: 0; gap: 16px;">
+                        <div class="mp-form-group">
+                            <label class="mp-label">Your Interest Rate Offer (%)</label>
+                            <div style="position:relative;">
+                                <input type="number" id="detBidAmountInput" class="mp-input" placeholder="e.g. 3.5" step="0.1" min="0.1" max="20" style="width:100%; padding-right:40px;">
+                                <span style="position:absolute; right:16px; top:50%; transform:translateY(-50%); font-weight:700; color:#94a3b8;">%</span>
+                            </div>
+                        </div>
+                        <div class="mp-form-group">
+                            <label class="mp-label">Offered Duration</label>
+                            <div class="loan-select-wrap">
+                                <select id="detBidDurationInput" class="loan-select" style="padding: 11px 38px 11px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 14px;">
+                                    <option value="1">1 Month</option>
+                                    <option value="2">2 Months</option>
+                                    <option value="3" selected>3 Months</option>
+                                    <option value="6">6 Months</option>
+                                </select>
+                                <span class="loan-select-arrow material-symbols-outlined" style="right: 12px;">expand_more</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="mp-submit-btn" onclick="submitLenderBid()" style="width:100%; justify-content:center; margin-top: 8px;">
+                        <span class="material-symbols-outlined">local_offer</span> Submit Private Offer
+                    </button>
+                </div>
+
+                <!-- Bidder List -->
+                <div class="det-bidders-box">
+                    <h4 style="font-size:13px; font-weight:800; color:#475569; margin:0 0 10px 0; text-transform:uppercase;">
+                        Bidders List (<span id="det-bid-count">0</span>)
+                    </h4>
+                    <div id="det-bids-list" style="display:flex; flex-direction:column; gap:8px; max-height:150px; overflow-y:auto;">
+                        <!-- Dynamically populated bidders -->
+                    </div>
+                    <p style="font-size:11px; color:#94a3b8; margin:8px 0 0; text-align:center;">🔒 Interest rates are private and only visible to the borrower.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== REQUEST A LOAN MODAL ===== -->
+    <div class="loan-modal-overlay" id="loan-modal-overlay" onclick="handleOverlayClick(event)">
+        <div class="loan-modal-box" id="loan-modal-box">
+
+            <!-- Modal Header -->
+            <div class="loan-modal-header">
+                <div>
+                    <h2 class="loan-modal-title">Create a Loan Request</h2>
+                    <p class="loan-modal-subtitle">Provide clear details to get the best interest rates from the UIU community.</p>
+                </div>
+                <button class="loan-modal-close" onclick="closeLoanModal()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="loan-modal-body">
+
+                <!-- Row 1: Amount + Category -->
+                <div class="loan-form-row">
+                    <div class="loan-form-group">
+                        <label class="loan-label">Loan Amount</label>
+                        <div class="loan-input-wrap">
+                            <input type="number" id="m-loan-amount" class="loan-input loan-input-big" placeholder="e.g., 15,000" oninput="updateLoanSummary()" />
+                            <span class="loan-input-badge">BDT</span>
+                        </div>
+                    </div>
+                    <div class="loan-form-group">
+                        <label class="loan-label">Purpose / Category</label>
+                        <div class="loan-select-wrap">
+                            <select id="m-loan-purpose" class="loan-select" onchange="updateLoanSummary()">
+                                <option>Tuition Fee</option>
+                                <option>Medical Emergency</option>
+                                <option>Laptop / Tech Repair</option>
+                                <option>Other</option>
+                            </select>
+                            <span class="loan-select-arrow material-symbols-outlined">expand_more</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reason -->
+                <div class="loan-form-group">
+                    <label class="loan-label">Why do you need this loan?</label>
+                    <textarea id="m-loan-reason" class="loan-textarea" rows="4" placeholder="Briefly explain your situation. Transparency helps build trust with lenders..."></textarea>
+                </div>
+
+                <!-- Row 2: Duration + Interest -->
+                <div class="loan-form-row">
+                    <div class="loan-form-group">
+                        <label class="loan-label">Repayment Duration</label>
+                        <div class="loan-select-wrap">
+                            <select id="m-loan-duration" class="loan-select" onchange="updateLoanSummary()">
+                                <option>1 Month</option>
+                                <option>2 Months</option>
+                                <option selected>3 Months</option>
+                                <option>6 Months</option>
+                            </select>
+                            <span class="loan-select-arrow material-symbols-outlined">expand_more</span>
+                        </div>
+                    </div>
+                    <div class="loan-form-group">
+                        <label class="loan-label">
+                            Max Acceptable Interest Rate (%)
+                            <span class="material-symbols-outlined loan-help-icon" title="Lenders will bid below this rate.">help_outline</span>
+                        </label>
+                        <input type="number" id="m-loan-max-interest" class="loan-input" placeholder="e.g., 5" min="0" max="20" step="0.1" />
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="loan-summary-box">
+                    <p class="loan-summary-text">
+                        Summary: You are requesting
+                        <span class="loan-summary-hl" id="m-sum-amount">0 BDT</span>
+                        for
+                        <span class="loan-summary-hl" id="m-sum-purpose">Tuition Fee</span>
+                        to be paid back in
+                        <span class="loan-summary-hl" id="m-sum-duration">3 Months</span>.
+                    </p>
+                </div>
+
+                <!-- Agreement -->
+                <label class="loan-agree-label">
+                    <input type="checkbox" id="m-agree-check" class="loan-agree-check" />
+                    <span class="loan-agree-text">
+                        I agree to the platform's repayment terms and understand that late payments will negatively impact my
+                        <strong>UIU Trust Score</strong>.
+                    </span>
+                </label>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="loan-modal-footer">
+                <button class="loan-cancel-btn" onclick="closeLoanModal()">Cancel</button>
+                <button class="loan-submit-btn" id="loan-submit-btn" onclick="submitLoanRequest()">
+                    Post Loan Request to Marketplace
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Modal -->
+</body>
+</html>

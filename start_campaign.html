@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Start a Campaign - UIU Friends</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    
+    <!-- Custom CSS Link -->
+    <link rel="stylesheet" href="start_campaign.css"/>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1E3A8A",
+                        "primary-hover": "#162c6b",
+                        "success": "#10B981",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-[#f8f6f6] text-slate-900 font-display">
+<div class="flex h-screen overflow-hidden">
+    <!-- Sidebar (Same to Same as Stitch Design) -->
+    <aside class="w-64 flex-shrink-0 bg-white border-r border-slate-200 flex flex-col">
+        <div class="p-6 flex items-center gap-3">
+            <div class="h-10 w-10 bg-primary rounded-xl flex items-center justify-center text-white">
+                <span class="material-symbols-outlined">handshake</span>
+            </div>
+            <div>
+                <h1 class="text-primary font-bold text-lg leading-tight">UIU Friends</h1>
+                <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Network</p>
+            </div>
+        </div>
+        <nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+            <a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 rounded-xl transition-colors" href="dashboard.html">
+                <span class="material-symbols-outlined text-[22px]">dashboard</span>
+                <span class="font-medium text-sm">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 bg-primary/10 text-primary rounded-xl transition-colors" href="crowdfunding.html">
+                <span class="material-symbols-outlined text-[22px] fill-1">campaign</span>
+                <span class="font-bold text-sm">Crowdfunding Hub</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 rounded-xl transition-colors" href="marketplace.html">
+                <span class="material-symbols-outlined text-[22px]">payments</span>
+                <span class="font-medium text-sm">Loan Network</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 rounded-xl transition-colors" href="myloans.html">
+                <span class="material-symbols-outlined text-[22px]">receipt_long</span>
+                <span class="font-medium text-sm">My Loans</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 rounded-xl transition-colors" href="profile.html">
+                <span class="material-symbols-outlined text-[22px]">settings</span>
+                <span class="font-medium text-sm">Settings</span>
+            </a>
+        </nav>
+        <div class="p-4 border-t border-slate-100">
+            <button class="w-full bg-primary text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-primary-hover transition-all" onclick="window.location.reload();">
+                <span class="material-symbols-outlined text-xl">add_circle</span>
+                <span>Start Campaign</span>
+            </button>
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col overflow-hidden">
+        <!-- Top Navbar -->
+        <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 z-10">
+            <div class="flex-1 max-w-md relative">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+                <input class="w-full bg-slate-100 border-none rounded-xl pl-10 pr-4 py-2 focus:ring-2 focus:ring-primary/20 text-sm" placeholder="Search campaigns, friends..." type="text"/>
+            </div>
+            <div class="flex items-center gap-6">
+                <!-- Trust Score as stars as requested -->
+                <div class="bg-success/10 text-success px-3 py-1.5 rounded-full flex items-center gap-2">
+                    <span class="material-symbols-outlined text-lg">verified</span>
+                    <span class="text-xs font-bold whitespace-nowrap">Trust Score: ★★★★★</span>
+                </div>
+                <button class="relative p-2 text-slate-600 hover:bg-slate-100 rounded-full transition-colors">
+                    <span class="material-symbols-outlined text-2xl">notifications</span>
+                    <span class="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 border-2 border-white rounded-full"></span>
+                </button>
+                <a href="profile.html" class="flex items-center gap-3 border-l border-slate-200 pl-6 hover:opacity-85 transition-opacity">
+                    <div class="text-right hidden md:block">
+                        <p class="text-sm font-bold text-slate-900 leading-none">Loading...</p>
+                        <p class="text-[11px] text-slate-500 font-medium">Gold Contributor</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden ring-2 ring-primary/10">
+                        <img class="w-full h-full object-cover" data-alt="User avatar" src="https://ui-avatars.com/api/?name=UIU+User&background=1E3A8A&color=fff"/>
+                    </div>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto px-4 md:px-6 py-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-8">
+                    <div class="flex items-center gap-2 text-primary font-semibold text-sm mb-2 uppercase tracking-wide">
+                        <span class="material-symbols-outlined text-base">create_new_folder</span>
+                        <span>New Campaign Wizard</span>
+                    </div>
+                    <h2 class="text-3xl font-black text-slate-900 leading-tight">Start a Fundraising Campaign</h2>
+                    <p class="text-slate-500 mt-1">Tell your story, upload proof, and get support from the UIU community.</p>
+                </div>
+
+                <!-- Stepper -->
+                <div class="flex items-center justify-between mb-10 relative">
+                    <div class="absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 -translate-y-1/2 z-0"></div>
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div class="w-10 h-10 bg-success text-white rounded-full flex items-center justify-center shadow-lg shadow-success/20">
+                            <span class="material-symbols-outlined text-xl">check</span>
+                        </div>
+                        <span class="mt-2 text-xs font-bold text-slate-500">Basics</span>
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg shadow-primary/20 ring-4 ring-white">
+                            <span class="font-bold">2</span>
+                        </div>
+                        <span class="mt-2 text-xs font-bold text-primary">Story &amp; Proof</span>
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div class="w-10 h-10 bg-white border-2 border-slate-200 text-slate-400 rounded-full flex items-center justify-center">
+                            <span class="font-bold">3</span>
+                        </div>
+                        <span class="mt-2 text-xs font-bold text-slate-400">Review &amp; Submit</span>
+                    </div>
+                </div>
+
+                <!-- Form Card -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-8 space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700">Campaign Title</label>
+                            <input class="w-full border-slate-200 rounded-xl focus:ring-primary focus:border-primary px-4 py-3" type="text" id="campaign-title" value="Emergency Medical Fund for Asif"/>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700">Target Amount</label>
+                            <div class="relative">
+                                <input class="w-full border-slate-200 rounded-xl focus:ring-primary focus:border-primary px-4 py-3 pr-16" type="text" id="target-amount" value="50,000"/>
+                                <span class="absolute right-4 top-1/2 -translate-y-1/2 font-bold text-slate-400">BDT</span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-2 space-y-2">
+                            <label class="text-sm font-bold text-slate-700">Category</label>
+                            <select class="w-full border-slate-200 rounded-xl focus:ring-primary focus:border-primary px-4 py-3" id="campaign-category">
+                                <option>General Contribution</option>
+                                <option selected="">Medical Checkup/Surgery</option>
+                                <option>Education Assistance</option>
+                                <option>Project Funding</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-bold text-slate-700">The Story</label>
+                        <div class="border border-slate-200 rounded-xl overflow-hidden">
+                            <div class="bg-slate-50 border-b border-slate-200 px-4 py-2 flex items-center gap-4">
+                                <button class="p-1 hover:bg-white rounded transition-colors" onclick="formatText('bold')"><span class="material-symbols-outlined text-xl">format_bold</span></button>
+                                <button class="p-1 hover:bg-white rounded transition-colors" onclick="formatText('italic')"><span class="material-symbols-outlined text-xl">format_italic</span></button>
+                                <button class="p-1 hover:bg-white rounded transition-colors" onclick="insertList()"><span class="material-symbols-outlined text-xl">format_list_bulleted</span></button>
+                                <button class="p-1 hover:bg-white rounded transition-colors" onclick="insertLink()"><span class="material-symbols-outlined text-xl">link</span></button>
+                                <button class="p-1 hover:bg-white rounded transition-colors ml-auto" onclick="triggerImageUpload()"><span class="material-symbols-outlined text-xl">image</span></button>
+                            </div>
+                            <textarea class="w-full border-none focus:ring-0 px-4 py-3 text-slate-600 leading-relaxed" id="story-text" placeholder="Be transparent. Explain what the funds will be used for exactly. Your transparency increases donor trust and campaign visibility..." rows="6"></textarea>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <label class="text-sm font-bold text-slate-700 flex items-center gap-2">
+                            <span>Proof of Necessity</span>
+                            <span class="bg-red-50 text-red-500 text-[10px] uppercase font-black px-1.5 py-0.5 rounded">Required</span>
+                        </label>
+                        <!-- Upload Area -->
+                        <div class="border-2 border-dashed border-primary/20 bg-primary/5 rounded-xl p-8 flex flex-col items-center justify-center text-center hover:bg-primary/[0.08] transition-all cursor-pointer" id="drop-zone" onclick="triggerFileInput()" ondragover="handleDragOver(event)" ondrop="handleDrop(event)">
+                            <div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-4">
+                                <span class="material-symbols-outlined text-3xl">upload_file</span>
+                            </div>
+                            <h4 class="text-slate-900 font-bold">Upload Verification Documents</h4>
+                            <p class="text-slate-500 text-sm max-w-sm mt-1">Please provide medical reports, hospital bills, or university ID cards as proof. Maximum file size 5MB (PDF, JPG, PNG).</p>
+                            <input type="file" id="file-input" multiple accept=".pdf,.jpg,.jpeg,.png" style="display:none;" onchange="handleFileSelect(event)" />
+                        </div>
+                        <!-- Uploaded Files Chips -->
+                        <div class="flex flex-wrap gap-3" id="files-list">
+                            <div class="flex items-center gap-2 bg-slate-100 px-3 py-2 rounded-xl border border-slate-200 group" id="file-medical_report.pdf">
+                                <span class="material-symbols-outlined text-slate-400 text-lg">picture_as_pdf</span>
+                                <span class="text-sm font-medium text-slate-700">medical_report.pdf</span>
+                                <button class="text-slate-400 hover:text-red-500" onclick="removeFile('medical_report.pdf')"><span class="material-symbols-outlined text-lg">close</span></button>
+                            </div>
+                            <div class="flex items-center gap-2 bg-slate-100 px-3 py-2 rounded-xl border border-slate-200 group" id="file-hospital_bill.jpg">
+                                <span class="material-symbols-outlined text-slate-400 text-lg">image</span>
+                                <span class="text-sm font-medium text-slate-700">hospital_bill.jpg</span>
+                                <button class="text-slate-400 hover:text-red-500" onclick="removeFile('hospital_bill.jpg')"><span class="material-symbols-outlined text-lg">close</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer Actions -->
+                <div class="mt-10 flex items-center justify-between pb-12">
+                    <button class="flex items-center gap-2 text-slate-500 font-bold hover:text-primary transition-colors" onclick="goBack()">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                        <span>Back</span>
+                    </button>
+                    <button class="bg-primary hover:bg-primary-hover text-white px-8 py-3.5 rounded-xl font-bold flex items-center gap-3 shadow-lg shadow-primary/20 transition-all" id="next-btn" onclick="goNext()">
+                        <span>Next Step: Review</span>
+                        <span class="material-symbols-outlined text-xl">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script src="start_campaign.js"></script>
+</body>
+</html>
