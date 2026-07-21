@@ -182,7 +182,7 @@ Import the SQL files before running the project.
 ## Clone Repository
 
 ```bash
-git clone https://github.com/your-username/UIU-Friends-Loan-Crowdfunding.git
+git clone https://github.com/GradientHunter/UIU-Friends-Loan-Crowdfunding.git
 ```
 
 ---
